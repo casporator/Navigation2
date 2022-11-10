@@ -34,9 +34,9 @@ extension String {
     var lowercase:   String { return "abcdefghijklmnopqrstuvwxyz" }
     var uppercase:   String { return "ABCDEFGHIJKLMNOPQRSTUVWXYZ" }
     var punctuation: String { return "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~" }
-    var letters:     String { return lowercase + uppercase + digits}
+    var letters:     String { return lowercase + uppercase + digits }
     var printable:   String { return digits + letters + punctuation }
-    
+    var allSymbols:         String {return digits + lowercase + uppercase + punctuation}
 
 
 

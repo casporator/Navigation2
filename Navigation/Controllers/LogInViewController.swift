@@ -199,6 +199,7 @@ class LoginViewController : UIViewController {
             passwordGenerator.isHidden = true
             indicator.startAnimating()
             passwordTextField.placeholder = "Please wait:"
+            passwordTextField.text = ""
             
             var password : String {
                 let symbols = String().letters
@@ -206,7 +207,7 @@ class LoginViewController : UIViewController {
                 return String((0..<4).map{ _ in symbols.randomElement()! })
             }
             
-            DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.global(qos: .userInteractive).async {
                 BruteForce.bruteForce(passwordToUnlock: password)
             
             DispatchQueue.main.async { [self] in
