@@ -198,8 +198,11 @@ class LoginViewController : UIViewController {
             
             passwordGenerator.isHidden = true
             indicator.startAnimating()
-            passwordTextField.placeholder = "Please wait:"
             passwordTextField.text = ""
+            passwordTextField.attributedPlaceholder = NSAttributedString(
+                string: "Please wait:",
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.black]
+            )
             
             var password : String {
                 let symbols = String().letters
@@ -216,7 +219,9 @@ class LoginViewController : UIViewController {
                 passwordGenerator.isHidden = false
                 passwordTextField.text = password
                 passwordTextField.isSecureTextEntry = false
-                passwordTextField.placeholder = "Password"
+                passwordTextField.attributedPlaceholder = NSAttributedString(
+                    string: "Password",
+                    attributes: [NSAttributedString.Key.foregroundColor: UIColor .systemGray2])
                 
             }
         }
