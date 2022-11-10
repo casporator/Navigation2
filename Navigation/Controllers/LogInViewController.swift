@@ -92,7 +92,7 @@ class LoginViewController : UIViewController {
     let alertPassword = UIAlertController(title: "Error!", message: "You have entered an incorrect login or password", preferredStyle: .actionSheet)
   
     // объявляю кнопку генерации пассворда
-    private lazy var passwordGenerator = CustomButton(title: "generate", titleColor: .gray, backgroundColor: .clear, fontSize: 10)
+    private lazy var passwordGenerator = CustomButton(title: " generate \npassword", titleColor: .gray, backgroundColor: .clear, fontSize: 10)
         
     //объявляю индикатор активности
     private lazy var indicator : UIActivityIndicatorView = {

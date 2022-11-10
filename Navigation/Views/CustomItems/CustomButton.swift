@@ -21,16 +21,17 @@ final class CustomButton: UIButton {
          backgroundColor: UIColor = .systemBlue,
          cornerRadius: CGFloat = 14,
          maskToBounds: Bool = true,
-         fontSize: CGFloat = 30  ) {
+         fontSize: CGFloat = 20  ) {
         
         super.init(frame: .zero)
         self.setTitle(title, for: .normal)
         self.setTitleColor(titleColor, for: .normal)
         self.setTitleColor(UIColor.black, for: .highlighted)
-        self.titleLabel?.font = UIFont(name: "Hannotate SC Bold", size: fontSize)
+        self.titleLabel?.font = UIFont(name: "Helvetica", size: fontSize)
         self.backgroundColor = backgroundColor
         self.layer.cornerRadius = cornerRadius
         self.layer.masksToBounds = maskToBounds
+        self.titleLabel?.numberOfLines = 2
         self.toAutoLayout()
         addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         
