@@ -20,13 +20,14 @@ final class CustomButton: UIButton {
          titleColor: UIColor = .white,
          backgroundColor: UIColor = .systemBlue,
          cornerRadius: CGFloat = 14,
-         maskToBounds: Bool = true) {
+         maskToBounds: Bool = true,
+         fontSize: CGFloat = 30  ) {
         
         super.init(frame: .zero)
         self.setTitle(title, for: .normal)
         self.setTitleColor(titleColor, for: .normal)
         self.setTitleColor(UIColor.black, for: .highlighted)
-        self.titleLabel?.font = UIFont(name: "Hannotate SC Bold", size: 30)
+        self.titleLabel?.font = UIFont(name: "Hannotate SC Bold", size: fontSize)
         self.backgroundColor = backgroundColor
         self.layer.cornerRadius = cornerRadius
         self.layer.masksToBounds = maskToBounds
