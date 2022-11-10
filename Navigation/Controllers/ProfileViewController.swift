@@ -99,23 +99,22 @@ class ProfileViewController: UIViewController {
     
     //MARK: анимация
     private func startAnimation() {
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut) {
+        
+        self.hiddenView.isHidden = false
+        self.hiddenView.alpha = 0.5
+        self.tableView.applyBlurEffect()
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut) { [self] in
             //MARK: задаю все изменения дубликата аватара при анимации
-            self.duplicateAvatar.isHidden = false
-            self.duplicateAvatar.center = self.hiddenView.center
-            self.duplicateAvatar.transform = CGAffineTransform(
-                scaleX: self.hiddenView.frame.width / self.duplicateAvatar.frame.width,
-                     y: self.hiddenView.frame.width / self.duplicateAvatar.frame.width)
-            self.duplicateAvatar.isUserInteractionEnabled = false
-            self.duplicateAvatar.layer.cornerRadius = 0
+            duplicateAvatar.isHidden = false
+            duplicateAvatar.center = tableView.center
+            duplicateAvatar.transform = CGAffineTransform(
+                scaleX: tableView.frame.width / duplicateAvatar.frame.width,
+                     y: tableView.frame.width / duplicateAvatar.frame.width)
+            duplicateAvatar.isUserInteractionEnabled = false
+            duplicateAvatar.layer.cornerRadius = 0
             
            
-            //MARK: задаю все изменения вью при анимации
-            self.hiddenView.isHidden = false
-            self.hiddenView.alpha = 0.5
-            
-            self.tableView.applyBlurEffect() //ещё с Вашего разрешения я добавил блюрэффект для тэйбвью. Задался вопросом как реализовать и решил попрактиковаться
-            
             //MARK: задаю появление xmarkView при окончании анимации
         } completion: { _ in
             UIView.animate(withDuration: 0.3, animations: {
@@ -173,13 +172,13 @@ class ProfileViewController: UIViewController {
             hiddenView.rightAnchor.constraint(equalTo: view.rightAnchor),
             hiddenView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            duplicateAvatar.topAnchor.constraint(equalTo: hiddenView.topAnchor, constant: 16),
-            duplicateAvatar.leftAnchor.constraint(equalTo: hiddenView.leftAnchor, constant: 16),
+            duplicateAvatar.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+            duplicateAvatar.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
             duplicateAvatar.widthAnchor.constraint(equalToConstant: 120),
             duplicateAvatar.heightAnchor.constraint(equalToConstant: 120),
 
-            xmarkView.topAnchor.constraint(equalTo: hiddenView.topAnchor, constant: 16),
-            xmarkView.rightAnchor.constraint(equalTo: hiddenView.rightAnchor, constant: -16),
+            xmarkView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: 16),
+            xmarkView.rightAnchor.constraint(equalTo: tableView.rightAnchor, constant: -16),
             xmarkView.widthAnchor.constraint(equalToConstant: 30),
             xmarkView.heightAnchor.constraint(equalToConstant: 30),
             
