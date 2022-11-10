@@ -35,8 +35,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarController.viewControllers = [loginTabNavigationController, feedTabNavigationController]
         
        
-        let item1 = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.crop.circle"), tag: 1)
-        let item2 = UITabBarItem(title: "Лента", image: UIImage(systemName: "rectangle.3.group.bubble.left"), tag: 0)
+        let item1 = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 1)
+        let item2 = UITabBarItem(title: "Feed", image: UIImage(systemName: "rectangle.3.group.bubble.left"), tag: 0)
         
         profileTabNavigationController.tabBarItem = item1
         feedTabNavigationController.tabBarItem = item2

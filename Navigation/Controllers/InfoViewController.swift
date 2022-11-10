@@ -31,7 +31,7 @@ class InfoViewController: UIViewController {
         messageButton.center = self.view.center
         
         //настройки кнопка назад
-        backButton.setTitle("Назад", for: .normal)
+        backButton.setTitle("Back", for: .normal)
         backButton.titleLabel?.font = UIFont(name: "Hannotate SC Bold", size: 20)
         backButton.setImage(UIImage(systemName: "arrow.left.square"), for: .normal)
         backButton.backgroundColor = .white

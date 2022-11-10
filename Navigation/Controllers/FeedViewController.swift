@@ -9,7 +9,7 @@ import UIKit
 
 class FeedViewController: UIViewController {
     // Mark: создание обьекта Post
-    var postTitle = HeadPost(title: "Пост")
+    var postTitle = HeadPost(title: "Post")
     
     private let textField: CustomTextField = {
       let field =  CustomTextField(placeholder: "Введите секретное слово ")
@@ -33,9 +33,9 @@ class FeedViewController: UIViewController {
       return button
     }()
     
-    private let checkGuessButton = CustomButton(title: "Проверить секретное слово")
+    private let checkGuessButton = CustomButton(title: "Проверить слово", fontSize: 19)
     
-    private let resultButton: CustomButton = CustomButton(title: "Проверка", backgroundColor: .systemYellow)
+    private let resultButton: CustomButton = CustomButton(title: "Проверка", backgroundColor: .systemYellow, fontSize: 19)
         
     private let stackView: UIStackView = {
        let stack = UIStackView()
@@ -126,7 +126,7 @@ class FeedViewController: UIViewController {
             navigationController?.navigationBar.standardAppearance = appearance
             navigationController?.navigationBar.compactAppearance = appearance
             navigationController?.navigationBar.scrollEdgeAppearance = appearance
-            self.navigationItem.title = "Лента"
+            self.navigationItem.title = "Feed"
             
             // Mark: добавляю кнопку справа нав бара
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .add)

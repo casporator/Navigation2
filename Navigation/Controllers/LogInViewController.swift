@@ -91,6 +91,16 @@ class LoginViewController : UIViewController {
     // объявляю алертконтроллер (в случае неверного логина)
     let alertPassword = UIAlertController(title: "Error!", message: "You have entered an incorrect login or password", preferredStyle: .actionSheet)
   
+    // объявляю кнопку генерации пассворда
+    private lazy var passwordGenerator = CustomButton(title: " generate \npassword", titleColor: .gray, backgroundColor: .clear, fontSize: 10)
+        
+    //объявляю индикатор активности
+    private lazy var indicator : UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.color = .black
+        activityIndicator.toAutoLayout()
+        return activityIndicator
+    }()
     
     
     
@@ -160,30 +170,64 @@ class LoginViewController : UIViewController {
    
     //MARK: Функция нажатия кнопки Login
     func addButtonActions() {
-
-        loginButton.buttonAction = { [self] in
-     
-        let incomingLogin = emailTextField.text
-        let incomingPassword = passwordTextField.text
         
+        loginButton.buttonAction = { [self] in
+            
+            let incomingLogin = emailTextField.text
+            let incomingPassword = passwordTextField.text
+            
 #if DEBUG
-        let loginingUser = TestUserService()
+            let loginingUser = TestUserService()
 #else
-        let loginingUser = CurrentUserService()
+            let loginingUser = CurrentUserService()
 #endif
-        if loginDelegate?.checkLogin(controller: self, login: incomingLogin ?? "", password: incomingPassword ?? "") == true {
-            
-            let profileViewController = ProfileViewController()
-            profileViewController.user1 = loginingUser.user
-            navigationController?.pushViewController(profileViewController, animated: true)
-        } else {
-            self.present(alertPassword, animated: true, completion: nil)
-            self.view.applyBlurEffect()
-            
+            if loginDelegate?.checkLogin(controller: self, login: incomingLogin ?? "", password: incomingPassword ?? "") == true {
+                
+                let profileViewController = ProfileViewController()
+                profileViewController.user1 = loginingUser.user
+                navigationController?.pushViewController(profileViewController, animated: true)
+            } else {
+                self.present(alertPassword, animated: true, completion: nil)
+                self.view.applyBlurEffect()
+                
+            }
         }
-      }
+     
+        //Нажатие на кнопку Генерации пароля:
+        
+        passwordGenerator.buttonAction = { [self] in
+            
+            passwordGenerator.isHidden = true
+            indicator.startAnimating()
+            passwordTextField.text = ""
+            passwordTextField.attributedPlaceholder = NSAttributedString(
+                string: "Please wait:",
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.black]
+            )
+            
+            var password : String {
+                let symbols = String().letters
+                
+                return String((0..<4).map{ _ in symbols.randomElement()! })
+            }
+            
+            DispatchQueue.global(qos: .userInteractive).async {
+                BruteForce.bruteForce(passwordToUnlock: password)
+            
+            DispatchQueue.main.async { [self] in
+                indicator.stopAnimating()
+                indicator.isHidden = true
+                passwordGenerator.isHidden = false
+                passwordTextField.text = password
+                passwordTextField.isSecureTextEntry = false
+                passwordTextField.attributedPlaceholder = NSAttributedString(
+                    string: "Password",
+                    attributes: [NSAttributedString.Key.foregroundColor: UIColor .systemGray2])
+                
+            }
+        }
     }
-    
+}
     
     func addViews(){
   
@@ -195,6 +239,8 @@ class LoginViewController : UIViewController {
         scrollView.addSubview(logoImageView)
         scrollView.addSubview(stackViewTextFields)
         scrollView.addSubview(loginButton)
+        scrollView.addSubview(passwordGenerator)
+        scrollView.addSubview(indicator)
         
         alertPassword.addAction(UIAlertAction(title: "Forgot password", style: .default, handler: { action in
             self.view.removeBlurEffect() }))
@@ -239,6 +285,14 @@ class LoginViewController : UIViewController {
             loginButton.centerXAnchor.constraint(equalTo: super.view.centerXAnchor),
             loginButton.heightAnchor.constraint(equalToConstant: 50),
             loginButton.leftAnchor.constraint(equalTo: super.view.leftAnchor, constant: 16),
+            
+            passwordGenerator.centerYAnchor.constraint(equalTo: passwordTextField.centerYAnchor),
+            passwordGenerator.rightAnchor.constraint(equalTo: passwordTextField.rightAnchor,constant: 6),
+            passwordGenerator.widthAnchor.constraint(equalToConstant: 100),
+            passwordGenerator.heightAnchor.constraint(equalToConstant: 40),
+            
+            indicator.centerXAnchor.constraint(equalTo: passwordTextField.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: passwordTextField.centerYAnchor),
             
         ])
     }
