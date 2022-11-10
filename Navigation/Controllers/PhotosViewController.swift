@@ -35,6 +35,9 @@ class PhotosViewController: UIViewController {
         
         return collectionView
     }()
+    
+    let alertController = UIAlertController(title: "Не хотите", message: "сменить фильтры на фото?", preferredStyle: .alert)
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +51,7 @@ class PhotosViewController: UIViewController {
         addConstraints()
         addFilter()
         updateFilter()
+        addAlertAction()
         
     }
     
@@ -72,6 +76,7 @@ class PhotosViewController: UIViewController {
         }
         
     }
+    
 
     
 /*
@@ -96,6 +101,17 @@ class PhotosViewController: UIViewController {
  //MARK: задание 10 обновляю фильры в фотоальбоме по таймигу (рандомные фильтры каждые 10 секунд 5 раз))
     
     @objc func updateFilter() {
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [self] (timer) in
+            timeCount += 1
+           if timeCount == 15 {
+                self.present(alertController, animated:true)
+                timer.invalidate()
+              
+        }
+      }
+    }
+   /*
+    @objc func updateFilter() {
         Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { [self] timer in
 
             addFilter()
@@ -105,7 +121,17 @@ class PhotosViewController: UIViewController {
             }
         }
     }
- 
+ */
+    func addAlertAction(){
+        alertController.addAction(UIAlertAction(title: "Сменить", style: .default, handler: { _ in
+                    self.addFilter()
+                    print("меняем фильтры")
+                }))
+        alertController.addAction(UIAlertAction(title: "Отмена", style: .default, handler: { _ in
+                    print("не меняем фильтры")
+                }))
+    }
+         
 func addViews(){
         view.addSubview(collectionView)
     }
@@ -119,7 +145,7 @@ func addViews(){
         ])
     }
 }
-
+    
 extension PhotosViewController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoCollection.count
