@@ -98,7 +98,7 @@ class PhotosViewController: UIViewController {
  
 */
     
- //MARK: задание 10 обновляю фильры в фотоальбоме по таймигу (рандомные фильтры каждые 10 секунд 5 раз))
+ //MARK: задание 10 (по таймингу в фотоальбоме вылетает алерт контроллер, который предлагает сменить фильтры на всех фото (фильтр меняется на рандомный!))
     
     @objc func updateFilter() {
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [self] (timer) in
@@ -110,18 +110,7 @@ class PhotosViewController: UIViewController {
         }
       }
     }
-   /*
-    @objc func updateFilter() {
-        Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { [self] timer in
-
-            addFilter()
-            timeCount += 1
-            if timeCount == 5 {
-                timer.invalidate()
-            }
-        }
-    }
- */
+ 
     func addAlertAction(){
         alertController.addAction(UIAlertAction(title: "Сменить", style: .default, handler: { _ in
                     self.addFilter()
