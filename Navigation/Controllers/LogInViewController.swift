@@ -97,6 +97,7 @@ class LoginViewController : UIViewController {
     //объявляю индикатор активности
     private lazy var indicator : UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.color = .black
         activityIndicator.toAutoLayout()
         return activityIndicator
     }()
