@@ -103,7 +103,6 @@ class LoginViewController : UIViewController {
     }()
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -114,6 +113,7 @@ class LoginViewController : UIViewController {
         addConstraints()
         setupGestures()
         addButtonActions()
+        
        
    }
 
@@ -193,10 +193,12 @@ class LoginViewController : UIViewController {
             }
         }
      
-        //Нажатие на кнопку Генерации пароля:
         
-        passwordGenerator.buttonAction = { [self] in
-            
+        
+        
+        //Нажатие на кнопку Генерации пароля:
+       passwordGenerator.buttonAction = { [self] in
+         
             passwordGenerator.isHidden = true
             indicator.startAnimating()
             passwordTextField.text = ""
@@ -210,6 +212,7 @@ class LoginViewController : UIViewController {
                 
                 return String((0..<4).map{ _ in symbols.randomElement()! })
             }
+    
             
             DispatchQueue.global(qos: .userInteractive).async {
                 BruteForce.bruteForce(passwordToUnlock: password)
@@ -223,12 +226,13 @@ class LoginViewController : UIViewController {
                 passwordTextField.attributedPlaceholder = NSAttributedString(
                     string: "Password",
                     attributes: [NSAttributedString.Key.foregroundColor: UIColor .systemGray2])
-                
+            
             }
         }
     }
 }
     
+      
     func addViews(){
   
         view.addSubview(scrollView)
@@ -241,6 +245,7 @@ class LoginViewController : UIViewController {
         scrollView.addSubview(loginButton)
         scrollView.addSubview(passwordGenerator)
         scrollView.addSubview(indicator)
+       
         
         alertPassword.addAction(UIAlertAction(title: "Forgot password", style: .default, handler: { action in
             self.view.removeBlurEffect() }))
@@ -293,9 +298,11 @@ class LoginViewController : UIViewController {
             
             indicator.centerXAnchor.constraint(equalTo: passwordTextField.centerXAnchor),
             indicator.centerYAnchor.constraint(equalTo: passwordTextField.centerYAnchor),
-            
+           
+          
         ])
     }
 }
+
 
 

@@ -15,6 +15,8 @@ class PhotosViewController: UIViewController {
     var contentPhotoDataArray: [UIImage] = []
     
     var timeCount : Int = 0
+    let filters : [ColorFilter] = [.posterize, .transfer, .noir, .tonal, .process, .chrome, .fade]
+
     
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -60,7 +62,7 @@ class PhotosViewController: UIViewController {
         
         let start = CFAbsoluteTimeGetCurrent()
         
-        ImageProcessor().processImagesOnThread(sourceImages: photoCollection, filter: ColorFilter.allCases.randomElement() ?? .chrome, qos: .userInitiated) {filteredImages in
+        ImageProcessor().processImagesOnThread(sourceImages: photoCollection, filter: filters.randomElement() ?? .chrome, qos: .userInitiated) {filteredImages in
             
             for (index,item) in filteredImages.enumerated() {
                 photoCollection[index] = UIImage(cgImage: item!)
@@ -103,7 +105,7 @@ class PhotosViewController: UIViewController {
     @objc func updateFilter() {
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [self] (timer) in
             timeCount += 1
-           if timeCount == 15 {
+           if timeCount == 12 {
                 self.present(alertController, animated:true)
                 timer.invalidate()
               
