@@ -11,9 +11,12 @@ import iOSIntPackage
 
 class PhotosViewController: UIViewController {
  
- 
    // private let facade = ImagePublisherFacade()
     var contentPhotoDataArray: [UIImage] = []
+    
+    var timeCount : Int = 0
+    let filters : [ColorFilter] = [.posterize, .transfer, .noir, .tonal, .process, .chrome, .fade]
+
     
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -34,6 +37,9 @@ class PhotosViewController: UIViewController {
         
         return collectionView
     }()
+    
+    let alertController = UIAlertController(title: "Не хотите", message: "сменить фильтры на фото?", preferredStyle: .alert)
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,26 +52,33 @@ class PhotosViewController: UIViewController {
         addViews()
         addConstraints()
         addFilter()
+        updateFilter()
+        addAlertAction()
+        
     }
-      
+    
+    
     func addFilter() {
         
         let start = CFAbsoluteTimeGetCurrent()
         
-        ImageProcessor().processImagesOnThread(sourceImages: photoCollection, filter: .fade, qos: .userInitiated) {filteredImages in
+        ImageProcessor().processImagesOnThread(sourceImages: photoCollection, filter: filters.randomElement() ?? .chrome, qos: .userInitiated) {filteredImages in
             
             for (index,item) in filteredImages.enumerated() {
                 photoCollection[index] = UIImage(cgImage: item!)
             }
-            
+
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
                 
                 let diff = CFAbsoluteTimeGetCurrent() - start
                 print ("время наложения фильтра на все картинки: \(diff)")
             }
+           
         }
+        
     }
+    
 
     
 /*
@@ -87,8 +100,30 @@ class PhotosViewController: UIViewController {
  
 */
     
+ //MARK: задание 10 (по таймингу в фотоальбоме вылетает алерт контроллер, который предлагает сменить фильтры на всех фото (фильтр меняется на рандомный!))
     
-    func addViews(){
+    @objc func updateFilter() {
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [self] (timer) in
+            timeCount += 1
+           if timeCount == 12 {
+                self.present(alertController, animated:true)
+                timer.invalidate()
+              
+        }
+      }
+    }
+ 
+    func addAlertAction(){
+        alertController.addAction(UIAlertAction(title: "Сменить", style: .default, handler: { _ in
+                    self.addFilter()
+                    print("меняем фильтры")
+                }))
+        alertController.addAction(UIAlertAction(title: "Отмена", style: .default, handler: { _ in
+                    print("не меняем фильтры")
+                }))
+    }
+         
+func addViews(){
         view.addSubview(collectionView)
     }
 
@@ -101,7 +136,7 @@ class PhotosViewController: UIViewController {
         ])
     }
 }
-
+    
 extension PhotosViewController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoCollection.count
