@@ -95,6 +95,7 @@ var user1: User = User( userName: "Hipster Dog", userAvatar:  UIImage(named: "IM
         closeAnimation()
     }
     
+    
     //MARK: анимация
     private func startAnimation() {
         

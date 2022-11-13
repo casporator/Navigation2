@@ -55,7 +55,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         return statusLbl
     }()
     
-    private let textField = CustomTextField(placeholder: " Enter you status", textAlignment: .left)
+    private let textField = CustomTextField(placeholder: " Enter you status", textAlignment: .natural)
     
     
     var statusText: String = ""
@@ -90,14 +90,17 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
                 do {
                     try self.newStatus()
                 } catch StatusError.emptyStatus {
-                    print("Вы ничего не ввели")
+                    statusAlert(message: "Невозможно изменить статус! Вы ничего не написали")
+                   
                 } catch StatusError.longStatus {
-                    print("Статус слишком длинный")
+                    statusAlert(message: "Статус слишком длинный! \nМаксимально допустимое количество символов: 50")
+                  
                 } catch {
-                    print("Unexpected error")
+                    statusAlert(message: "Unexpected error")
                 }
            
-            self.textField.text = ""
+           self.textField.text = ""
+            
             }
         
         }
@@ -105,11 +108,11 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
 
     func newStatus()  throws {
       
-        guard statusText.count < 50 else {
-            throw StatusError.longStatus
-        }
         guard statusText != "" else {
             throw StatusError.emptyStatus
+        }
+        guard statusText.count < 50 else {
+            throw StatusError.longStatus
         }
         self.statusLabel.text = self.statusText
     }
@@ -122,14 +125,13 @@ func statusTextChanged(){
             }
         }
     }
- /*
-    private func showAlert(message: String) {
-        let alertController = UIAlertController(title: "Error!", message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
+    
+    func statusAlert(message: String) {
+        let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
+        let actionOne = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(actionOne)
+        UIApplication.topViewController()!.present(alert, animated: true, completion: nil)
     }
- */
     
 func addConstraints(){
     
@@ -179,6 +181,7 @@ func addConstraints(){
         self.image.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    
     @objc func handleTapGesture(_ gestureRecognizer: UITapGestureRecognizer){
         NotificationCenter.default.post(name: Notification.Name("userTouchAva"), object: nil)
         //MARK: скрываем оригинальный аватар
@@ -199,3 +202,19 @@ func addConstraints(){
     }
 }
 
+extension UIApplication {
+    class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let navigationController = controller as? UINavigationController {
+            return topViewController(controller: navigationController.visibleViewController)
+        }
+        if let tabController = controller as? UITabBarController {
+            if let selected = tabController.selectedViewController {
+                return topViewController(controller: selected)
+            }
+        }
+        if let presented = controller?.presentedViewController {
+            return topViewController(controller: presented)
+        }
+        return controller
+    }
+}
