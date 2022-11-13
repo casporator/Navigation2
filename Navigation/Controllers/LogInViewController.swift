@@ -84,10 +84,10 @@ class LoginViewController : UIViewController {
         return password
     }()
     
-
     //MARK: добавляю кнопку логин
-    private lazy var loginButton = CustomButton(title: "Log In", backgroundColor: UIColor(patternImage: UIImage(named: "blue_pixel.png") ?? UIImage()), cornerRadius: 10,  fontSize: 20)
-  
+    private lazy var loginButton = CustomButton(title: "Log In", backgroundColor: UIColor(patternImage: UIImage(named: "blue_pixel.png") ?? UIImage()), cornerRadius: 10)
+    
+
     // объявляю алертконтроллер (в случае неверного логина)
     let alertPassword = UIAlertController(title: "Error!", message: "You have entered an incorrect login or password", preferredStyle: .actionSheet)
   
@@ -172,7 +172,6 @@ class LoginViewController : UIViewController {
     func addButtonActions() {
         
         loginButton.buttonAction = { [self] in
-            
             
             let incomingLogin = emailTextField.text
             let incomingPassword = passwordTextField.text
