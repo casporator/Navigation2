@@ -47,7 +47,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     private var statusLabel: UILabel = {
         var statusLbl = UILabel()
         statusLbl.text = "Waiting for your status"
-        statusLbl.numberOfLines = 0
+        statusLbl.numberOfLines = 2
         statusLbl.textColor = .gray
         statusLbl.font = UIFont(name: "regular", size: 14.0)
         statusLbl.translatesAutoresizingMaskIntoConstraints = false
@@ -86,21 +86,48 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     
     func addButtonActions() {
-        button.buttonAction = {
-            if self.statusText != "" {
-                self.statusLabel.text = self.statusText
-                self.textField.text = ""
-          }
+        button.buttonAction = { [self] in
+                do {
+                    try self.newStatus()
+                } catch StatusError.emptyStatus {
+                    print("Вы ничего не ввели")
+                } catch StatusError.longStatus {
+                    print("Статус слишком длинный")
+                } catch {
+                    print("Unexpected error")
+                }
+            self.textField.text = ""
+            }
+        
+        }
+
+
+    func newStatus()  throws {
+        guard statusText != "" else {
+            throw StatusError.emptyStatus
+        }
+        guard statusLabel.numberOfLines < 2 else {
+            throw StatusError.longStatus
+        }
+        self.statusLabel.text = self.statusText
     }
-}
     
-    func statusTextChanged(){
+    
+func statusTextChanged(){
         textField.textFieldAction = { [self] in
             if let text = textField.text {
                 statusText = text
             }
         }
     }
+ /*
+    private func showAlert(message: String) {
+        let alertController = UIAlertController(title: "Error!", message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+ */
     
 func addConstraints(){
     

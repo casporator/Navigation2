@@ -25,7 +25,7 @@ class Checker {
         
   }
     
-    func checkLogin(login: String, password: String) -> Result<Bool, loginError>  {
+    func checkLogin(login: String, password: String) -> Result<Bool, LoginError>  {
         if login == EnterLogin && password == EnterPassword {
             return .success(true)
         }
@@ -53,16 +53,16 @@ struct LoginInspector: LoginViewControllerDelegate {
         case .success(true):
             print("Логин и пароль - верны")
             return true
-        case .failure(loginError.loginEmpty):
+        case .failure(LoginError.loginEmpty):
             print("Error: Поле логина не заполненно")
             return false
-        case .failure(loginError.passwordEmpty):
+        case .failure(LoginError.passwordEmpty):
             print("Error: Поле пароля не заполнеено")
             return false
-        case .failure(loginError.empty):
+        case .failure(LoginError.empty):
             print("Error: Оба заполняемых поля пустые")
             return false
-        case .failure(loginError.incorrect):
+        case .failure(LoginError.incorrect):
             print("Error: Не правильный логин или пароль")
             return false
         case .success(false):
