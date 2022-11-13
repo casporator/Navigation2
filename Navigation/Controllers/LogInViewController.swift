@@ -167,6 +167,7 @@ class LoginViewController : UIViewController {
         self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
     
+    
    
     //MARK: Функция нажатия кнопки Login
     func addButtonActions() {

@@ -47,7 +47,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     private var statusLabel: UILabel = {
         var statusLbl = UILabel()
         statusLbl.text = "Waiting for your status"
-        statusLbl.numberOfLines = 2
+        statusLbl.numberOfLines = 0
         statusLbl.textColor = .gray
         statusLbl.font = UIFont(name: "regular", size: 14.0)
         statusLbl.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +85,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     }
     
     
-    func addButtonActions() {
+   func addButtonActions() {
         button.buttonAction = { [self] in
                 do {
                     try self.newStatus()
@@ -96,6 +96,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
                 } catch {
                     print("Unexpected error")
                 }
+           
             self.textField.text = ""
             }
         
@@ -103,11 +104,12 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
 
 
     func newStatus()  throws {
+      
+        guard statusText.count < 50 else {
+            throw StatusError.longStatus
+        }
         guard statusText != "" else {
             throw StatusError.emptyStatus
-        }
-        guard statusLabel.numberOfLines < 2 else {
-            throw StatusError.longStatus
         }
         self.statusLabel.text = self.statusText
     }
