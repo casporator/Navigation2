@@ -189,8 +189,8 @@ class LoginViewController : UIViewController {
                 profileViewController.user1 = loginingUser.user
                 navigationController?.pushViewController(profileViewController, animated: true)
             } else {
-                self.present(alertPassword, animated: true, completion: nil)
-                self.view.applyBlurEffect()
+              //  self.present(alertPassword, animated: true, completion: nil)
+               // self.view.applyBlurEffect()
                 
             }
         }

@@ -90,10 +90,10 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
                 do {
                     try self.newStatus()
                 } catch StatusError.emptyStatus {
-                    statusAlert(message: "Невозможно изменить статус! Вы ничего не написали")
+                    statusAlert(message: "Unable to change your status! \nYou didn't write anything")
                    
                 } catch StatusError.longStatus {
-                    statusAlert(message: "Статус слишком длинный! \nМаксимально допустимое количество символов: 50")
+                    statusAlert(message: "The status is too long! \nMaximum number of characters allowed: 50")
                   
                 } catch {
                     statusAlert(message: "Unexpected error")
@@ -127,7 +127,7 @@ func statusTextChanged(){
     }
     
     func statusAlert(message: String) {
-        let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error!", message: message, preferredStyle: .alert)
         let actionOne = UIAlertAction(title: "OK", style: .default)
         alert.addAction(actionOne)
         UIApplication.topViewController()!.present(alert, animated: true, completion: nil)

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol LoginViewControllerDelegate{
     func checkLogin(controller: LoginViewController,
@@ -54,19 +55,19 @@ struct LoginInspector: LoginViewControllerDelegate {
             print("Логин и пароль - верны")
             return true
         case .failure(LoginError.loginEmpty):
-            print("Error: Поле логина не заполненно")
+            loginAlert(message: "The Email field is not written:\nPlease enter your email")
             return false
         case .failure(LoginError.passwordEmpty):
-            print("Error: Поле пароля не заполнеено")
+            loginAlert(message: "The password field is not written:\nPlease enter your password")
             return false
         case .failure(LoginError.empty):
-            print("Error: Оба заполняемых поля пустые")
+            loginAlert(message: "The email and password fields is not writen:\nPlease enter your email & password")
             return false
         case .failure(LoginError.incorrect):
-            print("Error: Не правильный логин или пароль")
+            loginAlert(message: "Incorrect email or password:\nCheck the correctness of the input email or password ")
             return false
         case .success(false):
-            print("Error: Не известная ошибка")
+            loginAlert(message: "Unknown error")
             return false
         }
         
@@ -81,5 +82,29 @@ protocol LoginFactory {
 struct MyLoginFactory : LoginFactory {
     func makeLoginInspector() -> LoginInspector {
         return LoginInspector()
+    }
+}
+
+func loginAlert(message: String) {
+    let alert = UIAlertController(title: "Error", message: message, preferredStyle: .actionSheet)
+    let actionOne = UIAlertAction(title: "OK", style: .default)
+    alert.addAction(actionOne)
+    UIApplication.LoginViewController()!.present(alert, animated: true, completion: nil)
+}
+
+extension UIApplication {
+    class func LoginViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let navigationController = controller as? UINavigationController {
+            return LoginViewController(controller: navigationController.visibleViewController)
+        }
+        if let tabController = controller as? UITabBarController {
+            if let selected = tabController.selectedViewController {
+                return LoginViewController(controller: selected)
+            }
+        }
+        if let presented = controller?.presentedViewController {
+            return LoginViewController(controller: presented)
+        }
+        return controller
     }
 }
