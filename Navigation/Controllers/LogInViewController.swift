@@ -12,7 +12,7 @@ class LoginViewController : UIViewController {
     //Для класса LoginViewController сделайте свойство loginDelegate
     var loginDelegate : LoginViewControllerDelegate?
     
-
+    
     // MARK: создаю скролвью
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -78,22 +78,19 @@ class LoginViewController : UIViewController {
         password.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: password.frame.height))
         password.leftViewMode = .always
         password.toAutoLayout()
-        password.isSecureTextEntry = true 
+        password.isSecureTextEntry = true
         password.autocapitalizationType = .none
-      
+        
         return password
     }()
     
-
+    
     //MARK: добавляю кнопку логин
     private lazy var loginButton = CustomButton(title: "Log In", backgroundColor: UIColor(patternImage: UIImage(named: "blue_pixel.png") ?? UIImage()), cornerRadius: 10,  fontSize: 20)
-  
-    // объявляю алертконтроллер (в случае неверного логина)
-    let alertPassword = UIAlertController(title: "Error!", message: "You have entered an incorrect login or password", preferredStyle: .actionSheet)
-  
+    
     // объявляю кнопку генерации пассворда
     private lazy var passwordGenerator = CustomButton(title: " generate \npassword", titleColor: .gray, backgroundColor: .clear, fontSize: 10)
-        
+    
     //объявляю индикатор активности
     private lazy var indicator : UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: .medium)
@@ -114,14 +111,14 @@ class LoginViewController : UIViewController {
         setupGestures()
         addButtonActions()
         
-       
-   }
-
+        
+    }
+    
     
     // MARK: клавиатура
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-      
+        
         
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationBar.isHidden = true
@@ -151,9 +148,9 @@ class LoginViewController : UIViewController {
         }
     }
     
-
+    
     //MARK: Функция тапа клавиатуры
-     func setupGestures() {
+    func setupGestures() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.forcedHidingKeyboard))
         self.view.addGestureRecognizer(tapGesture)
     }
@@ -168,7 +165,7 @@ class LoginViewController : UIViewController {
     }
     
     
-   
+    
     //MARK: Функция нажатия кнопки Login
     func addButtonActions() {
         
@@ -189,18 +186,16 @@ class LoginViewController : UIViewController {
                 profileViewController.user1 = loginingUser.user
                 navigationController?.pushViewController(profileViewController, animated: true)
             } else {
-              //  self.present(alertPassword, animated: true, completion: nil)
-               // self.view.applyBlurEffect()
                 
             }
         }
-     
+        
         
         
         
         //Нажатие на кнопку Генерации пароля:
-       passwordGenerator.buttonAction = { [self] in
-         
+        passwordGenerator.buttonAction = { [self] in
+            
             passwordGenerator.isHidden = true
             indicator.startAnimating()
             passwordTextField.text = ""
@@ -214,31 +209,31 @@ class LoginViewController : UIViewController {
                 
                 return String((0..<4).map{ _ in symbols.randomElement()! })
             }
-    
+            
             
             DispatchQueue.global(qos: .userInteractive).async {
                 BruteForce.bruteForce(passwordToUnlock: password)
-            
-            DispatchQueue.main.async { [self] in
-                indicator.stopAnimating()
-                indicator.isHidden = true
-                passwordGenerator.isHidden = false
-                passwordTextField.text = password
-                passwordTextField.isSecureTextEntry = false
-                passwordTextField.attributedPlaceholder = NSAttributedString(
-                    string: "Password",
-                    attributes: [NSAttributedString.Key.foregroundColor: UIColor .systemGray2])
-            
+                
+                DispatchQueue.main.async { [self] in
+                    indicator.stopAnimating()
+                    indicator.isHidden = true
+                    passwordGenerator.isHidden = false
+                    passwordTextField.text = password
+                    passwordTextField.isSecureTextEntry = false
+                    passwordTextField.attributedPlaceholder = NSAttributedString(
+                        string: "Password",
+                        attributes: [NSAttributedString.Key.foregroundColor: UIColor .systemGray2])
+                    
+                }
             }
         }
     }
-}
     
-      
+    
     func addViews(){
-  
+        
         view.addSubview(scrollView)
-     
+        
         stackViewTextFields.addArrangedSubview(emailTextField)
         stackViewTextFields.addArrangedSubview(line)
         stackViewTextFields.addArrangedSubview(passwordTextField)
@@ -247,14 +242,6 @@ class LoginViewController : UIViewController {
         scrollView.addSubview(loginButton)
         scrollView.addSubview(passwordGenerator)
         scrollView.addSubview(indicator)
-       
-        
-        alertPassword.addAction(UIAlertAction(title: "Forgot password", style: .default, handler: { action in
-            self.view.removeBlurEffect() }))
-        alertPassword.addAction(UIAlertAction(title: "Try again", style: .cancel, handler: { action in
-            self.view.removeBlurEffect() }))
-      
-      
         
     }
     
@@ -282,7 +269,7 @@ class LoginViewController : UIViewController {
             line.heightAnchor.constraint(equalToConstant: 0.5),
             line.centerXAnchor.constraint(equalTo: super.view.centerXAnchor),
             line.leftAnchor.constraint(equalTo: super.view.leftAnchor, constant: 16),
-
+            
             passwordTextField.heightAnchor.constraint(equalToConstant: 49.75),
             passwordTextField.centerXAnchor.constraint(equalTo: super.view.centerXAnchor),
             passwordTextField.topAnchor.constraint(equalTo: line.bottomAnchor),
@@ -300,8 +287,8 @@ class LoginViewController : UIViewController {
             
             indicator.centerXAnchor.constraint(equalTo: passwordTextField.centerXAnchor),
             indicator.centerYAnchor.constraint(equalTo: passwordTextField.centerYAnchor),
-           
-          
+            
+            
         ])
     }
 }
