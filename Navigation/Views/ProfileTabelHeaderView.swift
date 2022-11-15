@@ -55,7 +55,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         return statusLbl
     }()
     
-    private let textField = CustomTextField(placeholder: " Enter you status", textAlignment: .left)
+    private let textField = CustomTextField(placeholder: " Enter you status", textAlignment: .natural)
     
     
     var statusText: String = ""
@@ -85,21 +85,53 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     }
     
     
-    func addButtonActions() {
-        button.buttonAction = {
-            if self.statusText != "" {
-                self.statusLabel.text = self.statusText
-                self.textField.text = ""
-          }
+   func addButtonActions() {
+        button.buttonAction = { [self] in
+                do {
+                    try self.newStatus()
+                } catch StatusError.emptyStatus {
+                    statusAlert(message: "Unable to change your status! \nYou didn't write anything")
+                   
+                } catch StatusError.longStatus {
+                    statusAlert(message: "The status is too long! \nMaximum number of characters allowed: 50")
+                  
+                } catch {
+                    statusAlert(message: "Unexpected error")
+                }
+           
+           self.textField.text = ""
+            
+            }
+        
+        }
+
+
+    func newStatus()  throws {
+      
+        guard statusText != "" else {
+            throw StatusError.emptyStatus
+        }
+        guard statusText.count < 50 else {
+            throw StatusError.longStatus
+        }
+        self.statusLabel.text = self.statusText
     }
-}
     
-    func statusTextChanged(){
+    
+func statusTextChanged(){
         textField.textFieldAction = { [self] in
             if let text = textField.text {
                 statusText = text
+                
             }
         }
+    }
+    
+    func statusAlert(message: String) {
+        let alert = UIAlertController(title: "Error!", message: message, preferredStyle: .alert)
+        let actionOne = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(actionOne)
+        UIApplication.topViewController()!.present(alert, animated: true, completion: nil)
     }
     
 func addConstraints(){
@@ -150,6 +182,7 @@ func addConstraints(){
         self.image.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    
     @objc func handleTapGesture(_ gestureRecognizer: UITapGestureRecognizer){
         NotificationCenter.default.post(name: Notification.Name("userTouchAva"), object: nil)
         //MARK: скрываем оригинальный аватар
@@ -169,4 +202,5 @@ func addConstraints(){
         image.isHidden = false
     }
 }
+
 

@@ -86,7 +86,6 @@ var user1: User = User( userName: "Hipster Dog", userAvatar:  UIImage(named: "IM
        #endif
        }
     
-    
    
     @objc func didTouchAvatar(notification: Notification) {
         startAnimation()
@@ -95,6 +94,7 @@ var user1: User = User( userName: "Hipster Dog", userAvatar:  UIImage(named: "IM
     @objc func didTouchXmark(_ gestureRecognizer: UITapGestureRecognizer){
         closeAnimation()
     }
+    
     
     //MARK: анимация
     private func startAnimation() {

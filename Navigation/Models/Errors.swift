@@ -8,11 +8,14 @@
 import Foundation
 import UIKit
 
-enum loginError: Error {
+enum LoginError: Error {
     case incorrect
     case loginEmpty
     case passwordEmpty
     case empty
 }
 
-
+enum StatusError: Error {
+    case emptyStatus
+    case longStatus
+}

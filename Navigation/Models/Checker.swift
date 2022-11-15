@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol LoginViewControllerDelegate{
     func checkLogin(controller: LoginViewController,
@@ -25,7 +26,7 @@ class Checker {
         
   }
     
-    func checkLogin(login: String, password: String) -> Result<Bool, loginError>  {
+    func checkLogin(login: String, password: String) -> Result<Bool, LoginError>  {
         if login == EnterLogin && password == EnterPassword {
             return .success(true)
         }
@@ -53,20 +54,20 @@ struct LoginInspector: LoginViewControllerDelegate {
         case .success(true):
             print("Логин и пароль - верны")
             return true
-        case .failure(loginError.loginEmpty):
-            print("Error: Поле логина не заполненно")
+        case .failure(LoginError.loginEmpty):
+            loginAlert(message: "THE EMAIL FIELD IS NOT WRITEN:\nPlease enter your email")
             return false
-        case .failure(loginError.passwordEmpty):
-            print("Error: Поле пароля не заполнеено")
+        case .failure(LoginError.passwordEmpty):
+            loginAlert(message: "THE PASSWORD FIELD IS NOT WRITEN:\nPlease enter your password")
             return false
-        case .failure(loginError.empty):
-            print("Error: Оба заполняемых поля пустые")
+        case .failure(LoginError.empty):
+            loginAlert(message: "THE EMAIL & PASSWORD FIELD IS NOT WRITEN:\nPlease enter your email & password")
             return false
-        case .failure(loginError.incorrect):
-            print("Error: Не правильный логин или пароль")
+        case .failure(LoginError.incorrect):
+            loginAlert(message: "INCORRECT EMAIL or PASSWORD:\nCheck the correctness of the input email or password ")
             return false
         case .success(false):
-            print("Error: Не известная ошибка")
+            loginAlert(message: "UNKNOWN ERROE")
             return false
         }
         
@@ -83,3 +84,15 @@ struct MyLoginFactory : LoginFactory {
         return LoginInspector()
     }
 }
+
+func loginAlert(message: String) {
+    let alert = UIAlertController(title: "ERROR", message: message, preferredStyle: .actionSheet)
+    let actionOne = UIAlertAction(title: "OK", style: .default)
+    alert.addAction(actionOne)
+    UIApplication.topViewController()!.present(alert, animated: true, completion: nil)
+}
+
+
+
+
+
