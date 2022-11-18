@@ -13,6 +13,7 @@ final class PlayerController: UIViewController {
     
     private var player = AVAudioPlayer()
     public var position: Int = 0
+    private var timer: Timer?
     
     private let trackName: UILabel = {
         let lable = UILabel()
@@ -25,7 +26,7 @@ final class PlayerController: UIViewController {
     
     private let artistName: UILabel = {
         let lable = UILabel()
-        lable.font = .systemFont(ofSize: 20, weight: .medium)
+        lable.font = .systemFont(ofSize: 20, weight: .bold)
         lable.textColor = .white
         lable.textAlignment = .center
         lable.toAutoLayout()
@@ -60,15 +61,31 @@ final class PlayerController: UIViewController {
         return stackView
     }()
     
-    private let progressBar: UIProgressView = {
-       let progress = UIProgressView()
-        progress.progressViewStyle = .bar
-        progress.setProgress(0.0, animated: true)
-        progress.progressTintColor = .white
-        progress.trackTintColor = .lightGray
-        progress.toAutoLayout()
+    private let timeSlider: UISlider = {
+       let slider = UISlider()
+        slider.tintColor = .white
+        slider.maximumTrackTintColor = .lightGray
+        slider.minimumTrackTintColor = .white
+        slider.thumbTintColor = .white
+        slider.minimumValue = 0.0
+     
+        slider.toAutoLayout()
         
-        return progress
+        return slider
+    }()
+    
+    private let volumeSlider: UISlider = {
+       let slider = UISlider()
+        slider.tintColor = .white
+        slider.maximumTrackTintColor = .lightGray
+        slider.minimumTrackTintColor = .white
+        slider.thumbTintColor = .white
+        slider.minimumValue = 0.0
+        slider.maximumValue = 1
+        slider.value = 0.5
+        slider.toAutoLayout()
+    
+        return slider
     }()
     
     private let elapsedTimeValueLable: UILabel = {
@@ -91,81 +108,123 @@ final class PlayerController: UIViewController {
         return lable
     }()
     
+    private lazy var soundStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 10.0
+        stackView.toAutoLayout()
+        return stackView
+    }()
+    
+    private let minSound = PlayerButton(image: "speaker.wave.1")
+    private let maxSound = PlayerButton(image: "speaker.wave.3")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemTeal
         
-        view.addSubviews(artistName,trackImg, trackName, progressBar, buttonsStack, elapsedTimeValueLable, remainingTimeValueLable)
+        view.addSubviews(artistName,trackImg, trackName, timeSlider, buttonsStack, elapsedTimeValueLable, remainingTimeValueLable, soundStack)
         
         buttonsStack.addArrangedSubview(backwordSongButton)
         buttonsStack.addArrangedSubview(playAndPauseButton)
         buttonsStack.addArrangedSubview(stopButton)
         buttonsStack.addArrangedSubview(nextSongButton)
         
+        soundStack.addArrangedSubview(minSound)
+        soundStack.addArrangedSubview(volumeSlider)
+        soundStack.addArrangedSubview(maxSound)
+        
         addConstraints()
         setUpPlayer()
         
         addButtunAction()
+        volumeSlider.addTarget(self, action: #selector(changeVolume), for: .valueChanged)
+        timeSlider.addTarget(self, action: #selector(changeTime), for: .valueChanged)
+        changeTime(sender: timeSlider)
+        changeVolume()
         
     }
     
     func addConstraints(){
         NSLayoutConstraint.activate([
             
-            artistName.topAnchor.constraint(equalTo: view.topAnchor, constant: 80),
+            artistName.topAnchor.constraint(equalTo: view.topAnchor, constant: 45),
             artistName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-            trackImg.topAnchor.constraint(equalTo: artistName.bottomAnchor, constant: 20),
+            trackImg.topAnchor.constraint(equalTo: artistName.bottomAnchor, constant: 10),
             trackImg.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            trackImg.widthAnchor.constraint(equalToConstant: 250),
+            trackImg.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -60),
+            trackImg.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 60),
             trackImg.heightAnchor.constraint(equalTo: trackImg.widthAnchor),
 
-            trackName.topAnchor.constraint(equalTo: trackImg.bottomAnchor, constant: 20),
+            trackName.topAnchor.constraint(equalTo: trackImg.bottomAnchor, constant: 10),
             trackName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            progressBar.topAnchor.constraint(equalTo: trackName.centerYAnchor, constant: 80),
-            progressBar.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            progressBar.widthAnchor.constraint(equalToConstant: 250),
-            progressBar.heightAnchor.constraint(equalToConstant: 1.5),
+            timeSlider.topAnchor.constraint(equalTo: trackName.centerYAnchor, constant: 70),
+            timeSlider.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            timeSlider.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
+            timeSlider.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
+            timeSlider.heightAnchor.constraint(equalToConstant: 1.5),
             
-            buttonsStack.topAnchor.constraint(equalTo: trackImg.bottomAnchor, constant: 180),
+            buttonsStack.topAnchor.constraint(equalTo: timeSlider.bottomAnchor, constant: 35),
             buttonsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            buttonsStack.heightAnchor.constraint(equalToConstant: 35),
+            buttonsStack.heightAnchor.constraint(equalToConstant: 50),
             
-            elapsedTimeValueLable.bottomAnchor.constraint(equalTo: progressBar.topAnchor, constant: -5),
-            elapsedTimeValueLable.leftAnchor.constraint(equalTo: progressBar.leftAnchor),
+            soundStack.topAnchor.constraint(equalTo: buttonsStack.bottomAnchor, constant: 25),
+            soundStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            soundStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15),
+            soundStack.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15),
             
-            remainingTimeValueLable.bottomAnchor.constraint(equalTo: progressBar.topAnchor, constant: -5),
-            remainingTimeValueLable.rightAnchor.constraint(equalTo: progressBar.rightAnchor),
+            elapsedTimeValueLable.bottomAnchor.constraint(equalTo: timeSlider.topAnchor, constant: -20),
+            elapsedTimeValueLable.leftAnchor.constraint(equalTo: view.leftAnchor, constant:  15),
+            
+            remainingTimeValueLable.bottomAnchor.constraint(equalTo: timeSlider.topAnchor, constant: -20),
+            remainingTimeValueLable.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15),
 
             playAndPauseButton.widthAnchor.constraint(equalToConstant: 50),
+            playAndPauseButton.heightAnchor.constraint(equalToConstant: 50),
+
             stopButton.widthAnchor.constraint(equalToConstant: 50),
-            backwordSongButton.widthAnchor.constraint(equalToConstant: 50),
-            nextSongButton.widthAnchor.constraint(equalToConstant: 50),
+            stopButton.heightAnchor.constraint(equalToConstant: 50),
+
+            backwordSongButton.widthAnchor.constraint(equalToConstant: 25),
+            nextSongButton.widthAnchor.constraint(equalToConstant: 25),
+          
             
         ])
     }
     
+    
     private func setUpPlayer() {
         
-        do {
-  
-            let track = TrackModel.tracks[position]
+    
+        let track = TrackModel.tracks[position]
+        
+        trackImg.image = track.image
+        trackName.text = track.trackName
+        artistName.text = track.artistName
+        
+        guard let path = Bundle.main.path(forResource: track.fileName, ofType: "mp3") else {
+            return
             
-            trackImg.image = track.image
-            trackName.text = track.trackName
-            artistName.text = track.artistName
-            
-        guard let path = Bundle.main.path(forResource: track.fileName, ofType: "mp3") else { return }
+        }
+        if timer == nil {
+            timer = Timer.scheduledTimer(timeInterval: 0.0001, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
+        }
+     
+            do {
             let url = URL(fileURLWithPath: path)
             player = try AVAudioPlayer(contentsOf: url)
-            player.prepareToPlay()
-        } catch {
-            print(error)
-        }
-
+                player.volume = 0.5
+                timeSlider.maximumValue = Float(player.duration)
+                player.prepareToPlay()
+                player.stop()
+            
+            } catch let error {
+                print(error.localizedDescription)
+            }
     }
-   
+            
     func addButtunAction() {
         
         playAndPauseButton.buttonAction = { [self] in
@@ -175,7 +234,6 @@ final class PlayerController: UIViewController {
             } else {
                 player.play()
                 playAndPauseButton.setImage(UIImage(systemName: "pause"), for: .normal)
-             
             }
         }
         
@@ -183,6 +241,8 @@ final class PlayerController: UIViewController {
             player.stop()
             playAndPauseButton.setImage(UIImage(systemName: "play"), for: .normal)
             player.currentTime = 0.0
+            timeSlider.value = 0.0
+
         }
         
         nextSongButton.buttonAction = { [self] in
@@ -190,6 +250,7 @@ final class PlayerController: UIViewController {
                 position += 1
                 setUpPlayer()
                 player.play()
+                playAndPauseButton.setImage(UIImage(systemName: "pause"), for: .normal)
             }
         }
         
@@ -198,12 +259,53 @@ final class PlayerController: UIViewController {
                 position -= 1
                 setUpPlayer()
                 player.play()
+                playAndPauseButton.setImage(UIImage(systemName: "pause"), for: .normal)
+              
             }
         }
         
+        minSound.buttonAction = { [self] in
+            volumeSlider.value = volumeSlider.minimumValue
+            player.volume = volumeSlider.value
+        }
+        
+        maxSound.buttonAction = { [self] in
+            volumeSlider.value = volumeSlider.maximumValue
+            player.volume = volumeSlider.value
+        }
         
     }
     
+        @objc func updateProgress() {
+            timeSlider.value = Float(player.currentTime)
+            let remainingTime = player.duration - player.currentTime
+            remainingTimeValueLable.text = getFormattedTime(timeInterval: remainingTime)
+            elapsedTimeValueLable.text = getFormattedTime(timeInterval: player.currentTime)
+        }
+        
+    @objc func changeTime(sender: UISlider) {
+        player.currentTime = Float64(sender.value)
+        player.play()
+    }
+    
+    @objc func changeVolume() {
+        self.player.volume = volumeSlider.value
+    }
+    
+    private func getFormattedTime(timeInterval: TimeInterval) -> String {
+        
+        let mins = timeInterval / 60
+        let secs = timeInterval.truncatingRemainder(dividingBy: 60)
+        let timeFormatter = NumberFormatter()
+        timeFormatter.minimumIntegerDigits = 2
+        timeFormatter.minimumFractionDigits = 0
+        timeFormatter.roundingMode = .down
+        
+        guard let minString = timeFormatter.string(from: NSNumber(value: mins)) , let secStr = timeFormatter.string(from: NSNumber(value: secs)) else {
+            return "0:00"
+        }
+        return "\(minString): \(secStr)"
+    }
     
 }
 

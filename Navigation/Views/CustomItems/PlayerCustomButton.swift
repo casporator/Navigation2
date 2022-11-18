@@ -22,10 +22,6 @@ class PlayerButton: UIButton {
         let image = UIImage(systemName: image)
         self.setImage(image, for: .normal)
         self.tintColor = .white
-       // self.backgroundColor = .white
-        //self.layer.borderColor = UIColor.black.cgColor
-       // self.layer.borderWidth = 1
-       // self.layer.cornerRadius = 6
         self.clipsToBounds = true
         self.toAutoLayout()
         
