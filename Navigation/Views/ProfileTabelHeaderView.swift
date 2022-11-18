@@ -93,7 +93,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
                     statusAlert(message: "Unable to change your status! \nYou didn't write anything")
                    
                 } catch StatusError.longStatus {
-                    statusAlert(message: "The status is too long! \nMaximum number of characters allowed: 50")
+                    statusAlert(message: "The status is too long! \nMaximum number of symbols allowed: 50")
                   
                 } catch {
                     statusAlert(message: "Unexpected error")

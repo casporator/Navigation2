@@ -13,6 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var feedTabNavigationController : UINavigationController!
     var profileTabNavigationController : UINavigationController!
     var loginTabNavigationController : UINavigationController!
+    var playerTabNavigationController : UINavigationController!
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -24,6 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarController = UITabBarController()
         
         feedTabNavigationController = UINavigationController.init(rootViewController: FeedViewController())
+        playerTabNavigationController = UINavigationController.init(rootViewController: PlayerController())
         profileTabNavigationController = UINavigationController.init(rootViewController: ProfileViewController())
         
         //MARK: Внедрите зависимость контроллера LoginViewController от LoginInspector:
@@ -32,15 +34,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         loginTabNavigationController = UINavigationController.init(rootViewController: loginController)
         
-        tabBarController.viewControllers = [loginTabNavigationController, feedTabNavigationController]
+        tabBarController.viewControllers = [loginTabNavigationController, playerTabNavigationController, feedTabNavigationController]
         
-       
-        let item1 = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 1)
         let item2 = UITabBarItem(title: "Feed", image: UIImage(systemName: "rectangle.3.group.bubble.left"), tag: 0)
+        let item1 = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 2)
+        let item3 = UITabBarItem(title: "Player", image: UIImage(systemName: "play.rectangle"), tag: 1)
         
         profileTabNavigationController.tabBarItem = item1
         feedTabNavigationController.tabBarItem = item2
         loginTabNavigationController.tabBarItem = item1
+        playerTabNavigationController.tabBarItem = item3
         
         
         UITabBar.appearance().tintColor = .systemBlue
