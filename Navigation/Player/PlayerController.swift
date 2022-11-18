@@ -197,7 +197,6 @@ final class PlayerController: UIViewController {
     
     private func setUpPlayer() {
         
-    
         let track = TrackModel.tracks[position]
         
         trackImg.image = track.image
@@ -212,14 +211,14 @@ final class PlayerController: UIViewController {
             timer = Timer.scheduledTimer(timeInterval: 0.0001, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
         }
      
-            do {
+        do {
             let url = URL(fileURLWithPath: path)
             player = try AVAudioPlayer(contentsOf: url)
                 player.volume = 0.5
                 timeSlider.maximumValue = Float(player.duration)
                 player.prepareToPlay()
-                player.stop()
-            
+
+         
             } catch let error {
                 print(error.localizedDescription)
             }
@@ -284,7 +283,7 @@ final class PlayerController: UIViewController {
         }
         
     @objc func changeTime(sender: UISlider) {
-        player.currentTime = Float64(sender.value)
+        player.currentTime = TimeInterval(sender.value)
         player.play()
     }
     
