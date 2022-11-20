@@ -14,7 +14,7 @@ final class PlayerController: UIViewController {
     private var player = AVAudioPlayer()
     public var position: Int = 0
     private var timer: Timer?
-    
+   
     private let trackName: UILabel = {
         let lable = UILabel()
         lable.font = .systemFont(ofSize: 25, weight: .bold)
@@ -53,6 +53,9 @@ final class PlayerController: UIViewController {
     private lazy var nextSongButton = PlayerButton(image: "forward")
     private lazy var backwordSongButton = PlayerButton(image: "backward")
     
+    private let minSound = PlayerButton(image: "speaker.wave.1")
+    private let maxSound = PlayerButton(image: "speaker.wave.3")
+    
     private lazy var buttonsStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -68,7 +71,6 @@ final class PlayerController: UIViewController {
         slider.minimumTrackTintColor = .white
         slider.thumbTintColor = .white
         slider.minimumValue = 0.0
-     
         slider.toAutoLayout()
         
         return slider
@@ -116,8 +118,6 @@ final class PlayerController: UIViewController {
         return stackView
     }()
     
-    private let minSound = PlayerButton(image: "speaker.wave.1")
-    private let maxSound = PlayerButton(image: "speaker.wave.3")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -248,7 +248,6 @@ final class PlayerController: UIViewController {
             if position + 1 < TrackModel.tracks.count {
                 position += 1
                 setUpPlayer()
-                player.play()
                 playAndPauseButton.setImage(UIImage(systemName: "pause"), for: .normal)
             }
         }
@@ -257,7 +256,6 @@ final class PlayerController: UIViewController {
             if position != 0 {
                 position -= 1
                 setUpPlayer()
-                player.play()
                 playAndPauseButton.setImage(UIImage(systemName: "pause"), for: .normal)
               
             }
@@ -290,6 +288,7 @@ final class PlayerController: UIViewController {
     @objc func changeVolume() {
         self.player.volume = volumeSlider.value
     }
+    
     
     private func getFormattedTime(timeInterval: TimeInterval) -> String {
         
