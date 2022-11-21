@@ -28,6 +28,15 @@
 		BB1C707C2926B8E300E2B844 /* Kryptonite.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB1C707B2926B8E300E2B844 /* Kryptonite.mp3 */; };
 		BB1C70802926BFD700E2B844 /* shockingblue.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB1C707F2926BFD700E2B844 /* shockingblue.mp3 */; };
 		BB1C70822926C61C00E2B844 /* PlayerCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C70812926C61C00E2B844 /* PlayerCustomButton.swift */; };
+		BB1C7084292A514D00E2B844 /* TrackListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C7083292A514D00E2B844 /* TrackListController.swift */; };
+		BB1C7086292AEA6000E2B844 /* Empty Walls.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB1C7085292AEA6000E2B844 /* Empty Walls.mp3 */; };
+		BB1C7088292AEBB100E2B844 /* The Unforgiven II.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB1C7087292AEBB000E2B844 /* The Unforgiven II.mp3 */; };
+		BB1C708A292AF3C800E2B844 /* The Man Comes Around.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB1C7089292AF3C700E2B844 /* The Man Comes Around.mp3 */; };
+		BB1C708E292AF54C00E2B844 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C708D292AF54C00E2B844 /* VideoPlayerViewController.swift */; };
+		BB1C7091292AF7A700E2B844 /* YoutubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = BB1C7090292AF7A700E2B844 /* YoutubeKit */; };
+		BB1C7093292AF88200E2B844 /* VideoListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C7092292AF88200E2B844 /* VideoListController.swift */; };
+		BB1C7095292AF96800E2B844 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C7094292AF96800E2B844 /* VideoModel.swift */; };
+		BB1C709C292BBC0500E2B844 /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = BB1C709B292BBC0500E2B844 /* YouTubeiOSPlayerHelper */; };
 		BB28D52128FACC980049BB92 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28D52028FACC980049BB92 /* User.swift */; };
 		BB28D52C28FF45E90049BB92 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28D52B28FF45E90049BB92 /* Checker.swift */; };
 		BB2D2D6E28EF40BF00742E1E /* StorageService.docc in Sources */ = {isa = PBXBuildFile; fileRef = BB2D2D6D28EF40BF00742E1E /* StorageService.docc */; };
@@ -113,6 +122,13 @@
 		BB1C707B2926B8E300E2B844 /* Kryptonite.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Kryptonite.mp3; sourceTree = "<group>"; };
 		BB1C707F2926BFD700E2B844 /* shockingblue.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shockingblue.mp3; sourceTree = "<group>"; };
 		BB1C70812926C61C00E2B844 /* PlayerCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCustomButton.swift; sourceTree = "<group>"; };
+		BB1C7083292A514D00E2B844 /* TrackListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListController.swift; sourceTree = "<group>"; };
+		BB1C7085292AEA6000E2B844 /* Empty Walls.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Empty Walls.mp3"; sourceTree = "<group>"; };
+		BB1C7087292AEBB000E2B844 /* The Unforgiven II.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "The Unforgiven II.mp3"; sourceTree = "<group>"; };
+		BB1C7089292AF3C700E2B844 /* The Man Comes Around.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "The Man Comes Around.mp3"; sourceTree = "<group>"; };
+		BB1C708D292AF54C00E2B844 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		BB1C7092292AF88200E2B844 /* VideoListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListController.swift; sourceTree = "<group>"; };
+		BB1C7094292AF96800E2B844 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		BB28D52028FACC980049BB92 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BB28D52B28FF45E90049BB92 /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
 		BB2D2D6A28EF40BF00742E1E /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +159,8 @@
 				BB1C6FA5291BF4E200E2B844 /* iOSIntPackage in Frameworks */,
 				BB2D2D7F28EF40BF00742E1E /* StorageService.framework in Frameworks */,
 				BB576B2728F5E3E5008922E8 /* SnapKit in Frameworks */,
+				BB1C7091292AF7A700E2B844 /* YoutubeKit in Frameworks */,
+				BB1C709C292BBC0500E2B844 /* YouTubeiOSPlayerHelper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,9 +231,8 @@
 		BB1C70732926B79400E2B844 /* Player */ = {
 			isa = PBXGroup;
 			children = (
-				BB1C70762926B83E00E2B844 /* Tracks */,
-				BB1C70712926B33600E2B844 /* PlayerController.swift */,
-				BB1C70742926B7C100E2B844 /* TrackModel.swift */,
+				BB1C708C292AF51D00E2B844 /* VideoPlayer */,
+				BB1C708B292AF50000E2B844 /* AudioPlayer */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -225,10 +242,34 @@
 			children = (
 				BB1C70772926B85A00E2B844 /* Immigrant Song.mp3 */,
 				BB1C70792926B8C200E2B844 /* Enemy.mp3 */,
+				BB1C7085292AEA6000E2B844 /* Empty Walls.mp3 */,
 				BB1C707B2926B8E300E2B844 /* Kryptonite.mp3 */,
+				BB1C7089292AF3C700E2B844 /* The Man Comes Around.mp3 */,
+				BB1C7087292AEBB000E2B844 /* The Unforgiven II.mp3 */,
 				BB1C707F2926BFD700E2B844 /* shockingblue.mp3 */,
 			);
 			path = Tracks;
+			sourceTree = "<group>";
+		};
+		BB1C708B292AF50000E2B844 /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				BB1C70712926B33600E2B844 /* PlayerController.swift */,
+				BB1C7083292A514D00E2B844 /* TrackListController.swift */,
+				BB1C70742926B7C100E2B844 /* TrackModel.swift */,
+				BB1C70762926B83E00E2B844 /* Tracks */,
+			);
+			path = AudioPlayer;
+			sourceTree = "<group>";
+		};
+		BB1C708C292AF51D00E2B844 /* VideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				BB1C708D292AF54C00E2B844 /* VideoPlayerViewController.swift */,
+				BB1C7092292AF88200E2B844 /* VideoListController.swift */,
+				BB1C7094292AF96800E2B844 /* VideoModel.swift */,
+			);
+			path = VideoPlayer;
 			sourceTree = "<group>";
 		};
 		BB2D2D6B28EF40BF00742E1E /* StorageService */ = {
@@ -340,6 +381,8 @@
 			packageProductDependencies = (
 				BB576B2628F5E3E5008922E8 /* SnapKit */,
 				BB1C6FA4291BF4E200E2B844 /* iOSIntPackage */,
+				BB1C7090292AF7A700E2B844 /* YoutubeKit */,
+				BB1C709B292BBC0500E2B844 /* YouTubeiOSPlayerHelper */,
 			);
 			productName = Navigation;
 			productReference = BB15976C28AA704200BBA453 /* Navigation.app */;
@@ -416,6 +459,8 @@
 			packageReferences = (
 				BB576B2528F5E3E5008922E8 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				BB1C6FA3291BF4E200E2B844 /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
+				BB1C708F292AF7A700E2B844 /* XCRemoteSwiftPackageReference "YoutubeKit" */,
+				BB1C709A292BBC0400E2B844 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
 			);
 			productRefGroup = BB15976D28AA704200BBA453 /* Products */;
 			projectDirPath = "";
@@ -434,10 +479,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB1C70802926BFD700E2B844 /* shockingblue.mp3 in Resources */,
+				BB1C7088292AEBB100E2B844 /* The Unforgiven II.mp3 in Resources */,
 				BB15977C28AA704200BBA453 /* LaunchScreen.storyboard in Resources */,
 				BB1C707A2926B8C200E2B844 /* Enemy.mp3 in Resources */,
 				BB1C707C2926B8E300E2B844 /* Kryptonite.mp3 in Resources */,
 				BB1C70782926B85A00E2B844 /* Immigrant Song.mp3 in Resources */,
+				BB1C708A292AF3C800E2B844 /* The Man Comes Around.mp3 in Resources */,
+				BB1C7086292AEA6000E2B844 /* Empty Walls.mp3 in Resources */,
 				BB15977928AA704200BBA453 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,6 +518,7 @@
 				BB15977028AA704200BBA453 /* AppDelegate.swift in Sources */,
 				BBD3DD08290810AA00EC8B8F /* CustomTextField.swift in Sources */,
 				BB28D52128FACC980049BB92 /* User.swift in Sources */,
+				BB1C7093292AF88200E2B844 /* VideoListController.swift in Sources */,
 				BBD3DD0C29083DD500EC8B8F /* FeedModel.swift in Sources */,
 				BBAB864728B4448100BB951A /* Struct.swift in Sources */,
 				BBAFDEF528CD4C2C00C4177C /* PhotosCollectionViewCell.swift in Sources */,
@@ -485,12 +534,15 @@
 				BB15978428AA75DE00BBA453 /* FeedViewController.swift in Sources */,
 				BBAFDED428C6A07500C4177C /* extension.swift in Sources */,
 				BB1C70722926B33600E2B844 /* PlayerController.swift in Sources */,
+				BB1C7095292AF96800E2B844 /* VideoModel.swift in Sources */,
 				BB15977228AA704200BBA453 /* SceneDelegate.swift in Sources */,
 				BB1C6FA7291C313B00E2B844 /* BruteForce.swift in Sources */,
 				BBAB864A28C3630C00BB951A /* LogInViewController.swift in Sources */,
 				BB1C70752926B7C100E2B844 /* TrackModel.swift in Sources */,
 				BBAFDEE628C92B5000C4177C /* PostTableViewCell.swift in Sources */,
 				BBAB864328B3B7D400BB951A /* ProfileTabelHeaderView.swift in Sources */,
+				BB1C7084292A514D00E2B844 /* TrackListController.swift in Sources */,
+				BB1C708E292AF54C00E2B844 /* VideoPlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -865,6 +917,22 @@
 				minimumVersion = 3.2.3;
 			};
 		};
+		BB1C708F292AF7A700E2B844 /* XCRemoteSwiftPackageReference "YoutubeKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rinov/YoutubeKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.7.0;
+			};
+		};
+		BB1C709A292BBC0400E2B844 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/youtube/youtube-ios-player-helper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		BB576B2528F5E3E5008922E8 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -880,6 +948,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BB1C6FA3291BF4E200E2B844 /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
 			productName = iOSIntPackage;
+		};
+		BB1C7090292AF7A700E2B844 /* YoutubeKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB1C708F292AF7A700E2B844 /* XCRemoteSwiftPackageReference "YoutubeKit" */;
+			productName = YoutubeKit;
+		};
+		BB1C709B292BBC0500E2B844 /* YouTubeiOSPlayerHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB1C709A292BBC0400E2B844 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
+			productName = YouTubeiOSPlayerHelper;
 		};
 		BB576B2628F5E3E5008922E8 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

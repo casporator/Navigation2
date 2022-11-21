@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarController = UITabBarController()
         
         feedTabNavigationController = UINavigationController.init(rootViewController: FeedViewController())
-        playerTabNavigationController = UINavigationController.init(rootViewController: PlayerController())
+        playerTabNavigationController = UINavigationController.init(rootViewController: TrackListController())
         profileTabNavigationController = UINavigationController.init(rootViewController: ProfileViewController())
         
         //MARK: Внедрите зависимость контроллера LoginViewController от LoginInspector:

@@ -33,7 +33,7 @@ class PhotoTableViewCell : UITableViewCell {
     
     private lazy var layout : UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal // хотел сделать горризонтальный скролл! установил 8 ячеек..но скролла нет ((((  Или это так не работает? Нельщя засунуть в таблицу коллекцию и скролить по горизонтали?
+        layout.scrollDirection = .horizontal 
         layout.collectionView?.isPagingEnabled = true
         layout.minimumInteritemSpacing = 8
         layout.sectionInset = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)

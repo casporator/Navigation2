@@ -17,6 +17,24 @@
         "revision" : "f222cbdf325885926566172f6f5f06af95473158",
         "version" : "5.6.0"
       }
+    },
+    {
+      "identity" : "youtube-ios-player-helper",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/youtube/youtube-ios-player-helper",
+      "state" : {
+        "revision" : "f57129cd4380ec0a74dd3a59da3270a1d653d59b",
+        "version" : "1.0.4"
+      }
+    },
+    {
+      "identity" : "youtubekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rinov/YoutubeKit",
+      "state" : {
+        "revision" : "f3c4518d1f5200edd0e32c8eaedf89f9343d4450",
+        "version" : "0.7.0"
+      }
     }
   ],
   "version" : 2
