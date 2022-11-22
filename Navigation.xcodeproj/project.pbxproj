@@ -129,6 +129,7 @@
 		BB1C708D292AF54C00E2B844 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		BB1C7092292AF88200E2B844 /* VideoListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListController.swift; sourceTree = "<group>"; };
 		BB1C7094292AF96800E2B844 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
+		BB1C709E292C2C8400E2B844 /* allux.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = allux.MP4; sourceTree = "<group>"; };
 		BB28D52028FACC980049BB92 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BB28D52B28FF45E90049BB92 /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
 		BB2D2D6A28EF40BF00742E1E /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -265,11 +266,20 @@
 		BB1C708C292AF51D00E2B844 /* VideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				BB1C709D292C2C6100E2B844 /* video */,
 				BB1C708D292AF54C00E2B844 /* VideoPlayerViewController.swift */,
 				BB1C7092292AF88200E2B844 /* VideoListController.swift */,
 				BB1C7094292AF96800E2B844 /* VideoModel.swift */,
 			);
 			path = VideoPlayer;
+			sourceTree = "<group>";
+		};
+		BB1C709D292C2C6100E2B844 /* video */ = {
+			isa = PBXGroup;
+			children = (
+				BB1C709E292C2C8400E2B844 /* allux.MP4 */,
+			);
+			path = video;
 			sourceTree = "<group>";
 		};
 		BB2D2D6B28EF40BF00742E1E /* StorageService */ = {

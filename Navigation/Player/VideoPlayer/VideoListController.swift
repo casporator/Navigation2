@@ -4,19 +4,17 @@
 //
 //  Created by Oleg Popov on 21.11.2022.
 //
-import YoutubeKit
 import Foundation
 import UIKit
-import AVKit
 
 
 class VideoListController: UIViewController {
     
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
-    private let videoPlaylist = VideoModel.playlist
+    private let videoPlaylist = VideoModel.videoList
     
-    private var player: YTSwiftyPlayer!
+  
     
     private let musicButton: UIButton = {
         let button = UIButton()
@@ -124,11 +122,12 @@ extension VideoListController: UITableViewDataSource {
 extension VideoListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let video = videoPlaylist[indexPath.row]
-        let videoID = video.id
-        let playerVC = VideoPlayerViewController(videoID: videoID)
-        
+        let position = indexPath.row
+        let playerVC = VideoPlayerController()
+        playerVC.tracklist = videoPlaylist
+        playerVC.position = position
         navigationController?.present(playerVC, animated: true, completion: nil)
     }
+    
 }
 
