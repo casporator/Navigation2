@@ -49,6 +49,67 @@ final class PlayerController: UIViewController {
         return img
     }()
     
+    private let soundSymbol: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "noteSymbol")
+        img.contentMode = .scaleToFill
+        img.clipsToBounds = true
+        img.toAutoLayout()
+        return img
+    }()
+    
+    private let soundView: UIView = {
+        let view = UIView()
+        view.alpha = 20
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.white.cgColor
+        view.layer.cornerRadius = 8
+        view.backgroundColor = .systemTeal
+        view.toAutoLayout()
+        return view
+    }()
+    
+    private let timeView: UIView = {
+        let view = UIView()
+        view.alpha = 20
+        view.layer.borderWidth = 2
+        view.layer.borderColor = UIColor.white.cgColor
+        view.layer.cornerRadius = 24
+        view.backgroundColor = .systemTeal
+        view.toAutoLayout()
+        return view
+    }()
+    
+    private let soundTitle: UILabel = {
+        let lable = UILabel()
+        lable.text = "Volume"
+        lable.font = .systemFont(ofSize: 12, weight: .bold)
+        lable.textColor = .white
+        lable.textAlignment = .center
+        lable.toAutoLayout()
+        return lable
+    }()
+    
+    private let minTitle: UILabel = {
+        let lable = UILabel()
+        lable.text = "Min."
+        lable.font = .systemFont(ofSize: 10, weight: .bold)
+        lable.textColor = .white
+        lable.textAlignment = .center
+        lable.toAutoLayout()
+        return lable
+    }()
+    
+    private let maxTitle: UILabel = {
+        let lable = UILabel()
+        lable.text = "Max."
+        lable.font = .systemFont(ofSize: 10, weight: .bold)
+        lable.textColor = .white
+        lable.textAlignment = .center
+        lable.toAutoLayout()
+        return lable
+    }()
+    
     private lazy var playAndPauseButton = PlayerButton(image: "play")
     private lazy var stopButton = PlayerButton(image: "stop")
     private lazy var nextSongButton = PlayerButton(image: "forward")
@@ -122,9 +183,9 @@ final class PlayerController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemTeal
+        view.backgroundColor = .white
         
-        view.addSubviews(artistName,trackImg, trackName, timeSlider, buttonsStack, elapsedTimeValueLable, remainingTimeValueLable, soundStack)
+        view.addSubviews(timeView, soundView, artistName, soundTitle, soundSymbol, minTitle, maxTitle, trackImg,  trackName, timeSlider, buttonsStack, elapsedTimeValueLable, remainingTimeValueLable, soundStack)
         
         buttonsStack.addArrangedSubview(backwordSongButton)
         buttonsStack.addArrangedSubview(playAndPauseButton)
@@ -154,40 +215,55 @@ final class PlayerController: UIViewController {
     
     func addConstraints(){
         NSLayoutConstraint.activate([
-            
-            artistName.topAnchor.constraint(equalTo: view.topAnchor, constant: 45),
-            artistName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-            trackImg.topAnchor.constraint(equalTo: artistName.bottomAnchor, constant: 10),
-            trackImg.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            trackImg.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -60),
-            trackImg.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 60),
-            trackImg.heightAnchor.constraint(equalTo: trackImg.widthAnchor),
-
-            trackName.topAnchor.constraint(equalTo: trackImg.bottomAnchor, constant: 10),
-            trackName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            //trackImg.topAnchor.constraint(equalTo: timeView.topAnchor, constant: 25),
+            trackImg.bottomAnchor.constraint(equalTo: timeSlider.topAnchor, constant: -60),
+            trackImg.leftAnchor.constraint(equalTo: timeView.leftAnchor, constant: 35),
+            trackImg.rightAnchor.constraint(equalTo: timeView.rightAnchor, constant: -35),
+            trackImg.widthAnchor.constraint(equalTo: trackImg.heightAnchor),
+            trackImg.centerXAnchor.constraint(equalTo: timeView.centerXAnchor),
             
-            timeSlider.topAnchor.constraint(equalTo: trackName.centerYAnchor, constant: 70),
+            
+            //time:
+            
+            timeView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            timeView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+            timeView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            timeView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 5),
+            timeView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -5),
+           
+            timeSlider.bottomAnchor.constraint(equalTo: artistName.topAnchor, constant: -20),
             timeSlider.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            timeSlider.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
-            timeSlider.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
+            timeSlider.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -35),
+            timeSlider.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 35),
             timeSlider.heightAnchor.constraint(equalToConstant: 1.5),
             
-            buttonsStack.topAnchor.constraint(equalTo: timeSlider.bottomAnchor, constant: 35),
+            elapsedTimeValueLable.bottomAnchor.constraint(equalTo: timeSlider.topAnchor, constant: -25),
+            elapsedTimeValueLable.leftAnchor.constraint(equalTo: view.leftAnchor, constant:  15),
+            
+            remainingTimeValueLable.bottomAnchor.constraint(equalTo: timeSlider.topAnchor, constant: -25),
+            remainingTimeValueLable.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15),
+            
+            artistName.bottomAnchor.constraint(equalTo: trackName.topAnchor, constant: -15),
+            artistName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            trackName.bottomAnchor.constraint(equalTo: soundSymbol.topAnchor, constant: -20),
+            trackName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            soundSymbol.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            soundSymbol.bottomAnchor.constraint(equalTo: buttonsStack.topAnchor, constant: -15),
+            soundSymbol.widthAnchor.constraint(equalToConstant: 30),
+            soundSymbol.heightAnchor.constraint(equalToConstant: 30),
+            
+            //buttons
+            
+            buttonsStack.bottomAnchor.constraint(equalTo: soundView.topAnchor, constant: -20),
             buttonsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonsStack.heightAnchor.constraint(equalToConstant: 50),
             
-            soundStack.topAnchor.constraint(equalTo: buttonsStack.bottomAnchor, constant: 25),
-            soundStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            soundStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15),
-            soundStack.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15),
+            backwordSongButton.widthAnchor.constraint(equalToConstant: 25),
+            backwordSongButton.heightAnchor.constraint(equalToConstant: 25),
             
-            elapsedTimeValueLable.bottomAnchor.constraint(equalTo: timeSlider.topAnchor, constant: -20),
-            elapsedTimeValueLable.leftAnchor.constraint(equalTo: view.leftAnchor, constant:  15),
-            
-            remainingTimeValueLable.bottomAnchor.constraint(equalTo: timeSlider.topAnchor, constant: -20),
-            remainingTimeValueLable.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15),
-
             playAndPauseButton.widthAnchor.constraint(equalToConstant: 50),
             playAndPauseButton.heightAnchor.constraint(equalToConstant: 50),
 
@@ -196,6 +272,28 @@ final class PlayerController: UIViewController {
 
             backwordSongButton.widthAnchor.constraint(equalToConstant: 25),
             nextSongButton.widthAnchor.constraint(equalToConstant: 25),
+            
+            //sound:
+            
+            soundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            soundView.bottomAnchor.constraint(equalTo: timeView.bottomAnchor, constant: -20),
+            soundView.heightAnchor.constraint(equalToConstant: 80),
+            soundView.leftAnchor.constraint(equalTo: timeView.leftAnchor, constant: 10),
+            soundView.rightAnchor.constraint(equalTo: timeView.rightAnchor, constant: -10),
+            
+            soundTitle.topAnchor.constraint(equalTo: soundView.topAnchor, constant: 5),
+            soundTitle.leftAnchor.constraint(equalTo: soundView.leftAnchor, constant: 10),
+            
+            soundStack.topAnchor.constraint(equalTo: soundView.topAnchor, constant: 25),
+            soundStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            soundStack.leftAnchor.constraint(equalTo: soundView.leftAnchor, constant: 5),
+            soundStack.rightAnchor.constraint(equalTo: soundView.rightAnchor, constant: -5),
+            
+            minTitle.topAnchor.constraint(equalTo: soundStack.bottomAnchor),
+            minTitle.leftAnchor.constraint(equalTo: soundStack.leftAnchor, constant: 2),
+            
+            maxTitle.topAnchor.constraint(equalTo: soundStack.bottomAnchor),
+            maxTitle.rightAnchor.constraint(equalTo: soundStack.rightAnchor, constant: -2),
           
             
         ])

@@ -36,6 +36,15 @@ final class VideoPlayerController: UIViewController {
         return img
     }()
     
+    private let videoSymbol: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "videoicon1")
+        img.contentMode = .scaleToFill
+        img.clipsToBounds = true
+        img.toAutoLayout()
+        return img
+    }()
+    
     private let soundView: UIView = {
         let view = UIView()
         view.alpha = 20
@@ -164,7 +173,7 @@ final class VideoPlayerController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .black
         
-        view.addSubviews(videoImg, timeView, soundView, videoName, soundTitle, minTitle, maxTitle, timeSlider, buttonsStack, elapsedTimeValueLable, remainingTimeValueLable, soundStack)
+        view.addSubviews(videoImg, timeView, soundView, videoName, soundTitle, videoSymbol, minTitle, maxTitle, timeSlider, buttonsStack, elapsedTimeValueLable, remainingTimeValueLable, soundStack)
         
         buttonsStack.addArrangedSubview(backwordSongButton)
         buttonsStack.addArrangedSubview(playAndPauseButton)
@@ -225,6 +234,11 @@ final class VideoPlayerController: UIViewController {
             
             videoName.topAnchor.constraint(equalTo: timeSlider.bottomAnchor, constant: 35),
             videoName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            videoSymbol.topAnchor.constraint(equalTo: videoName.bottomAnchor, constant: 20),
+            videoSymbol.centerXAnchor.constraint(equalTo: timeView.centerXAnchor),
+            videoSymbol.widthAnchor.constraint(equalToConstant: 80),
+            videoSymbol.heightAnchor.constraint(equalToConstant: 50),
             
             //buttons
             
