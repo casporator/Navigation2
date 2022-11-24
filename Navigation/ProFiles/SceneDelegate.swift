@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var profileTabNavigationController : UINavigationController!
     var loginTabNavigationController : UINavigationController!
     var playerTabNavigationController : UINavigationController!
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -56,6 +56,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
         self.window = window
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
