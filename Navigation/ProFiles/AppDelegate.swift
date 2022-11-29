@@ -19,7 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NetworkService.performRequest(with: urlString)
         print("Downloading data from: \(urlString)")
+        
+        InfoNetworkManeger.titleRequest()
         return true
+            
+  
+       
     }
         
 

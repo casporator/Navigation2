@@ -14,7 +14,10 @@ enum AppConfiguration: String, CaseIterable {
     case planets = "https://swapi.dev/api/planets/5"
 }
 
+
+
 struct NetworkService {
+    
     
     static func performRequest (with urlString: String) {
         
@@ -40,3 +43,6 @@ struct NetworkService {
 }
 
 //  при отключенном интернет (WiFi у ноутбука): Code=-1009 "The Internet connection appears to be offline."
+
+
+

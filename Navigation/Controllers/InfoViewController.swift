@@ -9,16 +9,30 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
+
+    
     let backButton = UIButton()
     let messageButton = UIButton()
     
     // создаем алерт c заголовок и сообщением
     let alertController = UIAlertController(title: "Внимание!", message: "Удалить пост №1 ?", preferredStyle: .alert)
-
+    
+    private var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = planetTitle
+        label.font = .systemFont(ofSize: 22, weight: .bold)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.textColor = .black
+        label.toAutoLayout()
+        return label
+    }()
+    
     
     override func viewDidLoad() {
            super.viewDidLoad()
             view.backgroundColor = .systemGray6
+        
         
         //настройки кнопкии удалить пост
         messageButton.setTitle(" удалить пост ", for: .normal)
@@ -45,6 +59,9 @@ class InfoViewController: UIViewController {
         //включаем отображение кнопки на экране:
         view.addSubview(messageButton)
         view.addSubview(backButton)
+        view.addSubview(titleLabel)
+        
+        
         //добавляем таргеты на кнопки
         backButton.addTarget(self, action: #selector(goToPostController), for: .touchUpInside)
         messageButton.addTarget(self, action: #selector(showMessage), for: .touchUpInside)
@@ -60,8 +77,12 @@ class InfoViewController: UIViewController {
         
         NSLayoutConstraint.activate([
                 backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
-                backButton.centerXAnchor.constraint(equalTo: view.leftAnchor, constant: 50 )
-               ])
+                backButton.centerXAnchor.constraint(equalTo: view.leftAnchor, constant: 50 ),
+                
+                titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                titleLabel.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 25),
+                
+        ])
         
     }
     
