@@ -56,7 +56,6 @@
 		BBAFDEF328CD4A3100C4177C /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAFDEF228CD4A3100C4177C /* PhotoTableViewCell.swift */; };
 		BBAFDEF528CD4C2C00C4177C /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAFDEF428CD4C2C00C4177C /* PhotosCollectionViewCell.swift */; };
 		BBAFDEF728CD4F9400C4177C /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAFDEF628CD4F9400C4177C /* PhotosViewController.swift */; };
-		BBB146842936513900E0CDB7 /* InfoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB146832936513900E0CDB7 /* InfoNetwork.swift */; };
 		BBBDD4F3292E8218004E5BEA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBDD4F2292E8218004E5BEA /* NetworkService.swift */; };
 		BBD3DD0629075B0600EC8B8F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3DD0529075B0600EC8B8F /* CustomButton.swift */; };
 		BBD3DD08290810AA00EC8B8F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3DD07290810AA00EC8B8F /* CustomTextField.swift */; };
@@ -149,7 +148,6 @@
 		BBAFDEF228CD4A3100C4177C /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		BBAFDEF428CD4C2C00C4177C /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBAFDEF628CD4F9400C4177C /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
-		BBB146832936513900E0CDB7 /* InfoNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoNetwork.swift; sourceTree = "<group>"; };
 		BBBDD4F2292E8218004E5BEA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BBD3DD0529075B0600EC8B8F /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		BBD3DD07290810AA00EC8B8F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -358,7 +356,6 @@
 			isa = PBXGroup;
 			children = (
 				BBBDD4F2292E8218004E5BEA /* NetworkService.swift */,
-				BBB146832936513900E0CDB7 /* InfoNetwork.swift */,
 			);
 			path = "Network Service";
 			sourceTree = "<group>";
@@ -553,7 +550,6 @@
 				BB15978A28ABDB9C00BBA453 /* InfoViewController.swift in Sources */,
 				BB15978628AA75F100BBA453 /* ProfileViewController.swift in Sources */,
 				BB1C6F9D2917EEC600E2B844 /* TestUserService.swift in Sources */,
-				BBB146842936513900E0CDB7 /* InfoNetwork.swift in Sources */,
 				BB1C6FB0291FF90900E2B844 /* Errors.swift in Sources */,
 				BB1C6F982917EE6900E2B844 /* UserService.swift in Sources */,
 				BB15978428AA75DE00BBA453 /* FeedViewController.swift in Sources */,

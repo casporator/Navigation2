@@ -35,7 +35,7 @@ class InfoViewController: UIViewController {
     
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = planetTitle
+        label.text = dataTitle
         label.font = .systemFont(ofSize: 22, weight: .bold)
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -74,10 +74,10 @@ class InfoViewController: UIViewController {
         
         // добавляем события
         alertController.addAction(UIAlertAction(title: "Delete", style: .default, handler: { _ in
-                    print("Пост №1 был удалён")
+                    print("Post №1 deleted")
                 }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { _ in
-                    print("отмена удаления поста №1")
+                    print("delete cancel")
                 }))
         
         
