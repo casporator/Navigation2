@@ -54,8 +54,7 @@ class InfoViewController: UIViewController {
         label.toAutoLayout()
         return label
     }()
-    
-    
+     
     override func viewDidLoad() {
            super.viewDidLoad()
             view.backgroundColor = .systemGray6
@@ -66,7 +65,6 @@ class InfoViewController: UIViewController {
         view.addSubview(backButton)
         view.addSubview(titleLabel)
         view.addSubview(orbitaLabel)
-        
         
         
         backButton.addTarget(self, action: #selector(goToPostController), for: .touchUpInside)
@@ -80,6 +78,7 @@ class InfoViewController: UIViewController {
                     print("delete cancel")
                 }))
         
+    
         
         NSLayoutConstraint.activate([
             backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
@@ -96,8 +95,9 @@ class InfoViewController: UIViewController {
             titleLabel.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 25),
             
             orbitaLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            orbitaLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5)
-                
+            orbitaLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
+            
+            
         ])
         
     }

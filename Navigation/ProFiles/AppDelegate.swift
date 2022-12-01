@@ -38,6 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Bad url to request")
             }
 
+    
+
         return true
             
   

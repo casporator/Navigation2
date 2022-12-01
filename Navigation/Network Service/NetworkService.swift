@@ -66,22 +66,22 @@ struct Planet: Decodable {
     }
 
 
-
 var dataTitle: String = ""
 var orbitalPeriod: String = ""
 
-struct InfoNetworkService {
 
+struct InfoNetworkService {
+    
     static func titleRequest(for configuration: AppConfiguration) {
         if let url = URL(string: configuration.rawValue) {
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 if let unwrappedData = data {
                     do {
                         let serializedDictionary = try JSONSerialization.jsonObject(with: unwrappedData, options: [])
-
+                        
                         if let dict = serializedDictionary as? [String: Any] {
                             if let title = dict["title"] as? String {
-                            dataTitle = title
+                                dataTitle = title
                                 print(title)
                             }
                         }
@@ -93,28 +93,29 @@ struct InfoNetworkService {
             task.resume()
         }
     }
-
+    
     static func orbitaRequest(for configuration: AppConfiguration) {
         if let url = URL(string: configuration.rawValue) {
-
+            
             let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
-
+                
                 if let unwrappedData = data {
-
+                    
                     do {
                         let decoder = JSONDecoder()
                         decoder.keyDecodingStrategy = .convertFromSnakeCase
                         let planet = try decoder.decode(Planet.self, from: unwrappedData)
                         orbitalPeriod = planet.orbitalPeriod
                         print(planet.orbitalPeriod)
-
+                        
                     } catch let error {
                         print(error)
                     }
                 }
             })
             task.resume()
-
+            
         }
     }
+    
 }
