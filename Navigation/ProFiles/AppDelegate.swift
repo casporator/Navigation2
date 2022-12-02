@@ -11,6 +11,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var appConfiguration: AppConfiguration?
+  
+   
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -19,7 +21,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NetworkService.performRequest(with: urlString)
         print("Downloading data from: \(urlString)")
+        
+       
+        appConfiguration = AppConfiguration.titleData
+            if let urlString = appConfiguration {
+        InfoNetworkService.titleRequest(for: urlString)
+            } else {
+                print("Bad url to request")
+            }
+
+            
+        appConfiguration = AppConfiguration.planetData
+            if let urlString = appConfiguration {
+        InfoNetworkService.orbitaRequest(for: urlString)
+            } else {
+                print("Bad url to request")
+            }
+
+    
+
         return true
+            
+  
+       
     }
         
 
