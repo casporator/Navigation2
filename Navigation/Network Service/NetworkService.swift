@@ -64,11 +64,15 @@ struct Planet: Decodable {
         var edited : String
         var url : String
     }
+struct JSONModelResident: Decodable {
+    let name: String
+}
 
 
 var dataTitle: String = ""
 var orbitalPeriod: String = ""
-
+var residents: [String] = []
+var residentsName: [String] = []
 
 struct InfoNetworkService {
     
@@ -106,7 +110,9 @@ struct InfoNetworkService {
                         decoder.keyDecodingStrategy = .convertFromSnakeCase
                         let planet = try decoder.decode(Planet.self, from: unwrappedData)
                         orbitalPeriod = planet.orbitalPeriod
-                        print(planet.orbitalPeriod)
+                        residents = planet.residents
+                        residentsName = [String](repeating: "", count: residents.count)
+                
                         
                     } catch let error {
                         print(error)
@@ -118,4 +124,32 @@ struct InfoNetworkService {
         }
     }
     
+    static func request(for configuration: String, index: Int) {
+        let urlSession = URLSession(configuration: URLSessionConfiguration.default)
+
+        if let url = URL(string: configuration) {
+            let task = urlSession.dataTask(with: url, completionHandler: { data, responce, error in
+
+                if let parsedData = data {
+
+                    let str = String(data: parsedData, encoding: .utf8)
+
+                    if let stringToSerilization = str {
+                        let dataToSerilization = Data(stringToSerilization.utf8) 
+
+                        do {
+                            if let json = try JSONSerialization.jsonObject(with: dataToSerilization, options: [] ) as? [String: Any] {
+                                if let name = json["name"] as? String {
+                                    residentsName[index] = name
+                                }
+                            }
+                        } catch let error as NSError {
+                            print("Failed to load: \(error.localizedDescription)")
+                        }
+                    }
+                }
+            })
+            task.resume()
+        }
+    }
 }
