@@ -13,24 +13,14 @@ import FirebaseAuth
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var appConfiguration: AppConfiguration?
-  
-   
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        FirebaseApp.configure()
-
-        Auth.auth().addStateDidChangeListener { auth, user in
-            if user == nil {
-                print("No authorized users")
-            }
-        }
+//        appConfiguration = AppConfiguration.allCases.randomElement()
+//        let urlString = String(appConfiguration?.rawValue ?? "")
         
-        appConfiguration = AppConfiguration.allCases.randomElement()
-        let urlString = String(appConfiguration?.rawValue ?? "")
-        
-        NetworkService.performRequest(with: urlString)
-        print("Downloading data from: \(urlString)")
+//        NetworkService.performRequest(with: urlString)
+//        print("Downloading data from: \(urlString)")
         
        
         appConfiguration = AppConfiguration.titleData
@@ -49,13 +39,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
 
     
-
+        FirebaseApp.configure()
         return true
             
   
        
     }
         
+    func applicationWillTerminate(_ application: UIApplication) {
+        do {
+            // если закрываем приложение, то делаем логаут
+            try Auth.auth().signOut()
+        } catch {
+            print("error")
+        }
+    }
 
     // MARK: UISceneSession Lifecycle
 

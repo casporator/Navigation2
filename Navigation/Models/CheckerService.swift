@@ -30,8 +30,8 @@ class CheckerService: CheckerServiceProtocol {
                 //Если пользователь не найден - предлагаем создать:
                 case AuthErrorCode.userNotFound.rawValue:
                     let alert = UIAlertController(title: "User not found", message: "Do you want to create this account as new?", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "No", style: .cancel ))
                     alert.addAction(UIAlertAction(title: "Register", style: .default, handler: {_ in self.signUp(login: login, password: password)}))
+                    alert.addAction(UIAlertAction(title: "No", style: .cancel ))
                     UIApplication.topViewController()!.present(alert, animated: true, completion: nil)
                
                 default:
@@ -46,7 +46,6 @@ class CheckerService: CheckerServiceProtocol {
     func signUp(login: String, password: String) {
             Auth.auth().createUser(withEmail: login, password: password) { result, error in
                 if let error = error {
-                    //Любые ошибки (например длина пароля)
                     AlertErrors.shared.alert(alertTitle: "Registration error", alertMessage: error.localizedDescription)
                 } else {
                     AlertErrors.shared.alert(alertTitle: "Congratulations!", alertMessage: "Your account has been successfully created")
