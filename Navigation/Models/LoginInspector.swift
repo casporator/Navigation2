@@ -9,6 +9,7 @@ import Foundation
 struct LoginInspector: LoginViewControllerDelegate {
     func checkLogin(controller: LoginViewController,
                     login: String, password: String) -> Bool {
+        
        CheckerService.shared.checkCredentials(login: login, password: password)
         if CheckerService.shared.isSingIn == true {
             return true
