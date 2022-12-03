@@ -84,4 +84,15 @@ extension UIApplication {
     }
 }
 
+class AlertErrors {
+    
+    static let shared = AlertErrors()
+    
+    func alert(alertTitle: String, alertMessage: String) {
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        let actionOne = UIAlertAction(title: "OK", style: .cancel)
+        alert.addAction(actionOne)
+        UIApplication.topViewController()!.present(alert, animated: true, completion: nil)
+    }
+}
 
