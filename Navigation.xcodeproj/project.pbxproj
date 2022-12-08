@@ -33,10 +33,8 @@
 		BB1C7088292AEBB100E2B844 /* The Unforgiven II.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB1C7087292AEBB000E2B844 /* The Unforgiven II.mp3 */; };
 		BB1C708A292AF3C800E2B844 /* The Man Comes Around.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB1C7089292AF3C700E2B844 /* The Man Comes Around.mp3 */; };
 		BB1C708E292AF54C00E2B844 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C708D292AF54C00E2B844 /* VideoPlayerViewController.swift */; };
-		BB1C7091292AF7A700E2B844 /* YoutubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = BB1C7090292AF7A700E2B844 /* YoutubeKit */; };
 		BB1C7093292AF88200E2B844 /* VideoListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C7092292AF88200E2B844 /* VideoListController.swift */; };
 		BB1C7095292AF96800E2B844 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C7094292AF96800E2B844 /* VideoModel.swift */; };
-		BB1C709C292BBC0500E2B844 /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = BB1C709B292BBC0500E2B844 /* YouTubeiOSPlayerHelper */; };
 		BB28D52128FACC980049BB92 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28D52028FACC980049BB92 /* User.swift */; };
 		BB28D52C28FF45E90049BB92 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28D52B28FF45E90049BB92 /* Checker.swift */; };
 		BB2D2D6E28EF40BF00742E1E /* StorageService.docc in Sources */ = {isa = PBXBuildFile; fileRef = BB2D2D6D28EF40BF00742E1E /* StorageService.docc */; };
@@ -56,6 +54,10 @@
 		BBAFDEF328CD4A3100C4177C /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAFDEF228CD4A3100C4177C /* PhotoTableViewCell.swift */; };
 		BBAFDEF528CD4C2C00C4177C /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAFDEF428CD4C2C00C4177C /* PhotosCollectionViewCell.swift */; };
 		BBAFDEF728CD4F9400C4177C /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAFDEF628CD4F9400C4177C /* PhotosViewController.swift */; };
+		BBB14686293A369400E0CDB7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBB14685293A369400E0CDB7 /* GoogleService-Info.plist */; };
+		BBB14689293A3F7D00E0CDB7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BBB14688293A3F7D00E0CDB7 /* FirebaseAuth */; };
+		BBB1468B293B74DF00E0CDB7 /* CheckerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB1468A293B74DE00E0CDB7 /* CheckerService.swift */; };
+		BBB1468D293B97AC00E0CDB7 /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB1468C293B97AC00E0CDB7 /* LoginInspector.swift */; };
 		BBBDD4F3292E8218004E5BEA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBDD4F2292E8218004E5BEA /* NetworkService.swift */; };
 		BBD3DD0629075B0600EC8B8F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3DD0529075B0600EC8B8F /* CustomButton.swift */; };
 		BBD3DD08290810AA00EC8B8F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3DD07290810AA00EC8B8F /* CustomTextField.swift */; };
@@ -148,6 +150,9 @@
 		BBAFDEF228CD4A3100C4177C /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		BBAFDEF428CD4C2C00C4177C /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBAFDEF628CD4F9400C4177C /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		BBB14685293A369400E0CDB7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BBB1468A293B74DE00E0CDB7 /* CheckerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerService.swift; sourceTree = "<group>"; };
+		BBB1468C293B97AC00E0CDB7 /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
 		BBBDD4F2292E8218004E5BEA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BBD3DD0529075B0600EC8B8F /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		BBD3DD07290810AA00EC8B8F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -162,8 +167,7 @@
 				BB1C6FA5291BF4E200E2B844 /* iOSIntPackage in Frameworks */,
 				BB2D2D7F28EF40BF00742E1E /* StorageService.framework in Frameworks */,
 				BB576B2728F5E3E5008922E8 /* SnapKit in Frameworks */,
-				BB1C7091292AF7A700E2B844 /* YoutubeKit in Frameworks */,
-				BB1C709C292BBC0500E2B844 /* YouTubeiOSPlayerHelper in Frameworks */,
+				BBB14689293A3F7D00E0CDB7 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +219,7 @@
 				BBAFDEE128C923BA00C4177C /* Controllers */,
 				BBAB864828B4452800BB951A /* Views */,
 				BB15977828AA704200BBA453 /* Assets.xcassets */,
+				BBB14685293A369400E0CDB7 /* GoogleService-Info.plist */,
 				BB15977A28AA704200BBA453 /* LaunchScreen.storyboard */,
 				BB15977D28AA704200BBA453 /* Info.plist */,
 			);
@@ -347,6 +352,8 @@
 				BB1C6FA6291C313B00E2B844 /* BruteForce.swift */,
 				BBD3DD0B29083DD500EC8B8F /* FeedModel.swift */,
 				BB1C6FAF291FF90900E2B844 /* Errors.swift */,
+				BBB1468C293B97AC00E0CDB7 /* LoginInspector.swift */,
+				BBB1468A293B74DE00E0CDB7 /* CheckerService.swift */,
 				BB1C6F962917EE0400E2B844 /* UserData */,
 			);
 			path = Models;
@@ -402,8 +409,7 @@
 			packageProductDependencies = (
 				BB576B2628F5E3E5008922E8 /* SnapKit */,
 				BB1C6FA4291BF4E200E2B844 /* iOSIntPackage */,
-				BB1C7090292AF7A700E2B844 /* YoutubeKit */,
-				BB1C709B292BBC0500E2B844 /* YouTubeiOSPlayerHelper */,
+				BBB14688293A3F7D00E0CDB7 /* FirebaseAuth */,
 			);
 			productName = Navigation;
 			productReference = BB15976C28AA704200BBA453 /* Navigation.app */;
@@ -480,8 +486,7 @@
 			packageReferences = (
 				BB576B2528F5E3E5008922E8 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				BB1C6FA3291BF4E200E2B844 /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
-				BB1C708F292AF7A700E2B844 /* XCRemoteSwiftPackageReference "YoutubeKit" */,
-				BB1C709A292BBC0400E2B844 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
+				BBB14687293A3F7D00E0CDB7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = BB15976D28AA704200BBA453 /* Products */;
 			projectDirPath = "";
@@ -506,6 +511,7 @@
 				BB1C707C2926B8E300E2B844 /* Kryptonite.mp3 in Resources */,
 				BB1C70782926B85A00E2B844 /* Immigrant Song.mp3 in Resources */,
 				BB1C708A292AF3C800E2B844 /* The Man Comes Around.mp3 in Resources */,
+				BBB14686293A369400E0CDB7 /* GoogleService-Info.plist in Resources */,
 				BB1C7086292AEA6000E2B844 /* Empty Walls.mp3 in Resources */,
 				BB15977928AA704200BBA453 /* Assets.xcassets in Resources */,
 			);
@@ -539,6 +545,7 @@
 				BB15977028AA704200BBA453 /* AppDelegate.swift in Sources */,
 				BBD3DD08290810AA00EC8B8F /* CustomTextField.swift in Sources */,
 				BB28D52128FACC980049BB92 /* User.swift in Sources */,
+				BBB1468D293B97AC00E0CDB7 /* LoginInspector.swift in Sources */,
 				BB1C7093292AF88200E2B844 /* VideoListController.swift in Sources */,
 				BBD3DD0C29083DD500EC8B8F /* FeedModel.swift in Sources */,
 				BBAB864728B4448100BB951A /* Struct.swift in Sources */,
@@ -561,6 +568,7 @@
 				BB1C6FA7291C313B00E2B844 /* BruteForce.swift in Sources */,
 				BBAB864A28C3630C00BB951A /* LogInViewController.swift in Sources */,
 				BB1C70752926B7C100E2B844 /* TrackModel.swift in Sources */,
+				BBB1468B293B74DF00E0CDB7 /* CheckerService.swift in Sources */,
 				BBAFDEE628C92B5000C4177C /* PostTableViewCell.swift in Sources */,
 				BBAB864328B3B7D400BB951A /* ProfileTabelHeaderView.swift in Sources */,
 				BB1C7084292A514D00E2B844 /* TrackListController.swift in Sources */,
@@ -939,28 +947,20 @@
 				minimumVersion = 3.2.3;
 			};
 		};
-		BB1C708F292AF7A700E2B844 /* XCRemoteSwiftPackageReference "YoutubeKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/rinov/YoutubeKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.7.0;
-			};
-		};
-		BB1C709A292BBC0400E2B844 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/youtube/youtube-ios-player-helper";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		BB576B2528F5E3E5008922E8 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.0.0;
+			};
+		};
+		BBB14687293A3F7D00E0CDB7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -971,20 +971,15 @@
 			package = BB1C6FA3291BF4E200E2B844 /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
 			productName = iOSIntPackage;
 		};
-		BB1C7090292AF7A700E2B844 /* YoutubeKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BB1C708F292AF7A700E2B844 /* XCRemoteSwiftPackageReference "YoutubeKit" */;
-			productName = YoutubeKit;
-		};
-		BB1C709B292BBC0500E2B844 /* YouTubeiOSPlayerHelper */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BB1C709A292BBC0400E2B844 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
-			productName = YouTubeiOSPlayerHelper;
-		};
 		BB576B2628F5E3E5008922E8 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BB576B2528F5E3E5008922E8 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		BBB14688293A3F7D00E0CDB7 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBB14687293A3F7D00E0CDB7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

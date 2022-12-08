@@ -130,7 +130,7 @@ class InfoViewController: UIViewController, UITableViewDelegate {
           self.dismiss(animated: true, completion: nil)
         }
         
-        // функция вывода сообщения
+       
         @objc func showMessage() {
             self.present(alertController, animated: true, completion: nil)
             }
@@ -145,12 +145,12 @@ extension InfoViewController : UITableViewDataSource{
         return 1
     }
 
-    // Настраиваем кол-во строк в секциях
+   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return residents.count
     }
 
-    // Заполняем данными таблицу.
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "defaultTableCellIdentifier", for: indexPath)

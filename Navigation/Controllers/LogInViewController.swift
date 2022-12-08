@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseAuth
 
 class LoginViewController : UIViewController {
     
     //Для класса LoginViewController сделайте свойство loginDelegate
     var loginDelegate : LoginViewControllerDelegate?
-    
     
     // MARK: создаю скролвью
     private lazy var scrollView: UIScrollView = {
@@ -165,7 +166,6 @@ class LoginViewController : UIViewController {
     }
     
     
-    
     //MARK: Функция нажатия кнопки Login
     func addButtonActions() {
         
@@ -180,13 +180,14 @@ class LoginViewController : UIViewController {
 #else
             let loginingUser = CurrentUserService()
 #endif
+            
             if loginDelegate?.checkLogin(controller: self, login: incomingLogin ?? "", password: incomingPassword ?? "") == true {
-                
+
                 let profileViewController = ProfileViewController()
                 profileViewController.user1 = loginingUser.user
                 navigationController?.pushViewController(profileViewController, animated: true)
             } else {
-                
+
             }
         }
         
