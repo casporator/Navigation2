@@ -58,6 +58,8 @@
 		BBB14689293A3F7D00E0CDB7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BBB14688293A3F7D00E0CDB7 /* FirebaseAuth */; };
 		BBB1468B293B74DF00E0CDB7 /* CheckerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB1468A293B74DE00E0CDB7 /* CheckerService.swift */; };
 		BBB1468D293B97AC00E0CDB7 /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB1468C293B97AC00E0CDB7 /* LoginInspector.swift */; };
+		BBB1468F2942538500E0CDB7 /* FileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB1468E2942538400E0CDB7 /* FileViewController.swift */; };
+		BBB146932942B99E00E0CDB7 /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB146922942B99E00E0CDB7 /* FileManagerService.swift */; };
 		BBBDD4F3292E8218004E5BEA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBDD4F2292E8218004E5BEA /* NetworkService.swift */; };
 		BBD3DD0629075B0600EC8B8F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3DD0529075B0600EC8B8F /* CustomButton.swift */; };
 		BBD3DD08290810AA00EC8B8F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3DD07290810AA00EC8B8F /* CustomTextField.swift */; };
@@ -153,6 +155,8 @@
 		BBB14685293A369400E0CDB7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BBB1468A293B74DE00E0CDB7 /* CheckerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerService.swift; sourceTree = "<group>"; };
 		BBB1468C293B97AC00E0CDB7 /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
+		BBB1468E2942538400E0CDB7 /* FileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewController.swift; sourceTree = "<group>"; };
+		BBB146922942B99E00E0CDB7 /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
 		BBBDD4F2292E8218004E5BEA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BBD3DD0529075B0600EC8B8F /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		BBD3DD07290810AA00EC8B8F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 		BB15976E28AA704200BBA453 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				BBB1469429436E9300E0CDB7 /* FileManager */,
 				BBBDD4F1292E816C004E5BEA /* Network Service */,
 				BB1C70732926B79400E2B844 /* Player */,
 				BB2D2D8928EF540000742E1E /* ProFiles */,
@@ -357,6 +362,15 @@
 				BB1C6F962917EE0400E2B844 /* UserData */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		BBB1469429436E9300E0CDB7 /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				BBB146922942B99E00E0CDB7 /* FileManagerService.swift */,
+				BBB1468E2942538400E0CDB7 /* FileViewController.swift */,
+			);
+			path = FileManager;
 			sourceTree = "<group>";
 		};
 		BBBDD4F1292E816C004E5BEA /* Network Service */ = {
@@ -540,6 +554,7 @@
 			files = (
 				BBAFDEF128CD476800C4177C /* Photos.swift in Sources */,
 				BBAFDEF728CD4F9400C4177C /* PhotosViewController.swift in Sources */,
+				BBB146932942B99E00E0CDB7 /* FileManagerService.swift in Sources */,
 				BBD3DD0629075B0600EC8B8F /* CustomButton.swift in Sources */,
 				BB15978828AAD82600BBA453 /* PostViewController.swift in Sources */,
 				BB15977028AA704200BBA453 /* AppDelegate.swift in Sources */,
@@ -556,6 +571,7 @@
 				BB28D52C28FF45E90049BB92 /* Checker.swift in Sources */,
 				BB15978A28ABDB9C00BBA453 /* InfoViewController.swift in Sources */,
 				BB15978628AA75F100BBA453 /* ProfileViewController.swift in Sources */,
+				BBB1468F2942538500E0CDB7 /* FileViewController.swift in Sources */,
 				BB1C6F9D2917EEC600E2B844 /* TestUserService.swift in Sources */,
 				BB1C6FB0291FF90900E2B844 /* Errors.swift in Sources */,
 				BB1C6F982917EE6900E2B844 /* UserService.swift in Sources */,

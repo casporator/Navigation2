@@ -14,6 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var profileTabNavigationController : UINavigationController!
     var loginTabNavigationController : UINavigationController!
     var playerTabNavigationController : UINavigationController!
+    var fileTabNavigationController : UINavigationController!
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -27,6 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         feedTabNavigationController = UINavigationController.init(rootViewController: FeedViewController())
         playerTabNavigationController = UINavigationController.init(rootViewController: TrackListController())
         profileTabNavigationController = UINavigationController.init(rootViewController: ProfileViewController())
+        fileTabNavigationController = UINavigationController.init(rootViewController: FileViewController())
         
         //MARK: Внедрите зависимость контроллера LoginViewController от LoginInspector:
         let loginController = LoginViewController()
@@ -34,16 +36,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         loginTabNavigationController = UINavigationController.init(rootViewController: loginController)
         
-        tabBarController.viewControllers = [loginTabNavigationController, playerTabNavigationController, feedTabNavigationController]
+        tabBarController.viewControllers = [
+                                            loginTabNavigationController,
+                                            playerTabNavigationController,
+                                            feedTabNavigationController,
+                                            fileTabNavigationController
+                                           ]
         
         let item2 = UITabBarItem(title: "Feed", image: UIImage(systemName: "rectangle.3.group.bubble.left"), tag: 0)
         let item1 = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 2)
         let item3 = UITabBarItem(title: "Player", image: UIImage(systemName: "play.rectangle"), tag: 1)
+        let item4 = UITabBarItem(title: "File", image: UIImage(systemName: "folder.badge.person.crop"), tag: 3)
         
         profileTabNavigationController.tabBarItem = item1
         feedTabNavigationController.tabBarItem = item2
         loginTabNavigationController.tabBarItem = item1
         playerTabNavigationController.tabBarItem = item3
+        fileTabNavigationController.tabBarItem = item4
         
         
         UITabBar.appearance().tintColor = .systemBlue
