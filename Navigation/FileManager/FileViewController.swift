@@ -35,15 +35,11 @@ class FileViewController: UIViewController, UIImagePickerControllerDelegate & UI
         view.addSubview(tableView)
         navBarCustomization()
         addConstraints()
-        
-      
     }
     
     override func viewWillAppear(_ animated: Bool) {
-       
-        tableView.reloadData()
+       tableView.reloadData()
     }
-    
     
     
     func addConstraints(){
