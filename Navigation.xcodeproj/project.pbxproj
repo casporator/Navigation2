@@ -30,8 +30,6 @@
 		BB1C70822926C61C00E2B844 /* PlayerCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C70812926C61C00E2B844 /* PlayerCustomButton.swift */; };
 		BB1C7084292A514D00E2B844 /* TrackListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C7083292A514D00E2B844 /* TrackListController.swift */; };
 		BB1C7086292AEA6000E2B844 /* Empty Walls.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB1C7085292AEA6000E2B844 /* Empty Walls.mp3 */; };
-		BB1C7088292AEBB100E2B844 /* The Unforgiven II.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB1C7087292AEBB000E2B844 /* The Unforgiven II.mp3 */; };
-		BB1C708A292AF3C800E2B844 /* The Man Comes Around.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BB1C7089292AF3C700E2B844 /* The Man Comes Around.mp3 */; };
 		BB1C708E292AF54C00E2B844 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C708D292AF54C00E2B844 /* VideoPlayerViewController.swift */; };
 		BB1C7093292AF88200E2B844 /* VideoListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C7092292AF88200E2B844 /* VideoListController.swift */; };
 		BB1C7095292AF96800E2B844 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C7094292AF96800E2B844 /* VideoModel.swift */; };
@@ -59,7 +57,7 @@
 		BBB1468B293B74DF00E0CDB7 /* CheckerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB1468A293B74DE00E0CDB7 /* CheckerService.swift */; };
 		BBB1468D293B97AC00E0CDB7 /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB1468C293B97AC00E0CDB7 /* LoginInspector.swift */; };
 		BBB1468F2942538500E0CDB7 /* FileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB1468E2942538400E0CDB7 /* FileViewController.swift */; };
-		BBB146932942B99E00E0CDB7 /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB146922942B99E00E0CDB7 /* FileManagerService.swift */; };
+		BBB146C5294695E800E0CDB7 /* TextPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB146C4294695E800E0CDB7 /* TextPicker.swift */; };
 		BBBDD4F3292E8218004E5BEA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBDD4F2292E8218004E5BEA /* NetworkService.swift */; };
 		BBD3DD0629075B0600EC8B8F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3DD0529075B0600EC8B8F /* CustomButton.swift */; };
 		BBD3DD08290810AA00EC8B8F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3DD07290810AA00EC8B8F /* CustomTextField.swift */; };
@@ -129,8 +127,6 @@
 		BB1C70812926C61C00E2B844 /* PlayerCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCustomButton.swift; sourceTree = "<group>"; };
 		BB1C7083292A514D00E2B844 /* TrackListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListController.swift; sourceTree = "<group>"; };
 		BB1C7085292AEA6000E2B844 /* Empty Walls.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Empty Walls.mp3"; sourceTree = "<group>"; };
-		BB1C7087292AEBB000E2B844 /* The Unforgiven II.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "The Unforgiven II.mp3"; sourceTree = "<group>"; };
-		BB1C7089292AF3C700E2B844 /* The Man Comes Around.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "The Man Comes Around.mp3"; sourceTree = "<group>"; };
 		BB1C708D292AF54C00E2B844 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		BB1C7092292AF88200E2B844 /* VideoListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListController.swift; sourceTree = "<group>"; };
 		BB1C7094292AF96800E2B844 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
@@ -156,7 +152,7 @@
 		BBB1468A293B74DE00E0CDB7 /* CheckerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerService.swift; sourceTree = "<group>"; };
 		BBB1468C293B97AC00E0CDB7 /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
 		BBB1468E2942538400E0CDB7 /* FileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewController.swift; sourceTree = "<group>"; };
-		BBB146922942B99E00E0CDB7 /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
+		BBB146C4294695E800E0CDB7 /* TextPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPicker.swift; sourceTree = "<group>"; };
 		BBBDD4F2292E8218004E5BEA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BBD3DD0529075B0600EC8B8F /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		BBD3DD07290810AA00EC8B8F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -258,8 +254,6 @@
 				BB1C70792926B8C200E2B844 /* Enemy.mp3 */,
 				BB1C7085292AEA6000E2B844 /* Empty Walls.mp3 */,
 				BB1C707B2926B8E300E2B844 /* Kryptonite.mp3 */,
-				BB1C7089292AF3C700E2B844 /* The Man Comes Around.mp3 */,
-				BB1C7087292AEBB000E2B844 /* The Unforgiven II.mp3 */,
 				BB1C707F2926BFD700E2B844 /* shockingblue.mp3 */,
 			);
 			path = Tracks;
@@ -367,8 +361,8 @@
 		BBB1469429436E9300E0CDB7 /* FileManager */ = {
 			isa = PBXGroup;
 			children = (
-				BBB146922942B99E00E0CDB7 /* FileManagerService.swift */,
 				BBB1468E2942538400E0CDB7 /* FileViewController.swift */,
+				BBB146C4294695E800E0CDB7 /* TextPicker.swift */,
 			);
 			path = FileManager;
 			sourceTree = "<group>";
@@ -519,12 +513,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB1C70802926BFD700E2B844 /* shockingblue.mp3 in Resources */,
-				BB1C7088292AEBB100E2B844 /* The Unforgiven II.mp3 in Resources */,
 				BB15977C28AA704200BBA453 /* LaunchScreen.storyboard in Resources */,
 				BB1C707A2926B8C200E2B844 /* Enemy.mp3 in Resources */,
 				BB1C707C2926B8E300E2B844 /* Kryptonite.mp3 in Resources */,
 				BB1C70782926B85A00E2B844 /* Immigrant Song.mp3 in Resources */,
-				BB1C708A292AF3C800E2B844 /* The Man Comes Around.mp3 in Resources */,
 				BBB14686293A369400E0CDB7 /* GoogleService-Info.plist in Resources */,
 				BB1C7086292AEA6000E2B844 /* Empty Walls.mp3 in Resources */,
 				BB15977928AA704200BBA453 /* Assets.xcassets in Resources */,
@@ -554,7 +546,6 @@
 			files = (
 				BBAFDEF128CD476800C4177C /* Photos.swift in Sources */,
 				BBAFDEF728CD4F9400C4177C /* PhotosViewController.swift in Sources */,
-				BBB146932942B99E00E0CDB7 /* FileManagerService.swift in Sources */,
 				BBD3DD0629075B0600EC8B8F /* CustomButton.swift in Sources */,
 				BB15978828AAD82600BBA453 /* PostViewController.swift in Sources */,
 				BB15977028AA704200BBA453 /* AppDelegate.swift in Sources */,
@@ -580,6 +571,7 @@
 				BBBDD4F3292E8218004E5BEA /* NetworkService.swift in Sources */,
 				BB1C70722926B33600E2B844 /* PlayerController.swift in Sources */,
 				BB1C7095292AF96800E2B844 /* VideoModel.swift in Sources */,
+				BBB146C5294695E800E0CDB7 /* TextPicker.swift in Sources */,
 				BB15977228AA704200BBA453 /* SceneDelegate.swift in Sources */,
 				BB1C6FA7291C313B00E2B844 /* BruteForce.swift in Sources */,
 				BBAB864A28C3630C00BB951A /* LogInViewController.swift in Sources */,
