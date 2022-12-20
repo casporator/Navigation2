@@ -34,10 +34,21 @@ class RealmManager {
         realmUsers = Array(realm.objects(RealmUsers.self))
     }
     
-    func saveRealmUser (login: String, password: String) {
+    func saveRealmUser(login: String, password: String) {
         try! realm.write {
             let users = RealmUsers(login: login, password: password)
             realm.add(users)
         }
     }
+    
+    func checkRealmUser(viewController: LoginViewController) {
+        reloadUserBase()
+        
+        if !realmUsers.isEmpty {
+            let profileViewController = ProfileViewController()
+            navigationController?.pushViewController(profileViewController, animated: true)
+        }
+        
+    }
+    
 }

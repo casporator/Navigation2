@@ -111,6 +111,7 @@ class LoginViewController : UIViewController {
         addConstraints()
         setupGestures()
         addButtonActions()
+        realmManager.checkRealmUser(viewController: self)
         
         
     }
