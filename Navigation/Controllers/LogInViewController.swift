@@ -13,6 +13,7 @@ class LoginViewController : UIViewController {
     
     //Для класса LoginViewController сделайте свойство loginDelegate
     var loginDelegate : LoginViewControllerDelegate?
+    var realmManager = RealmManager()
     
     // MARK: создаю скролвью
     private lazy var scrollView: UIScrollView = {
@@ -107,10 +108,16 @@ class LoginViewController : UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = true
         
+        realmManager.reloadUserBase() 
+        if !realmManager.realmUsers.isEmpty {
+            let profileViewController = ProfileViewController()
+            navigationController?.pushViewController(profileViewController, animated: true)
+        }
         addViews()
         addConstraints()
         setupGestures()
         addButtonActions()
+      
         
         
     }

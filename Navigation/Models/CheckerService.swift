@@ -17,7 +17,7 @@ protocol CheckerServiceProtocol {
 class CheckerService: CheckerServiceProtocol {
    
     static let shared = CheckerService()
-    
+    var realmManager = RealmManager()
    
     var isSingIn: Bool = false
     
@@ -30,7 +30,11 @@ class CheckerService: CheckerServiceProtocol {
                 //Если пользователь не найден - предлагаем создать:
                 case AuthErrorCode.userNotFound.rawValue:
                     let alert = UIAlertController(title: "User not found", message: "Do you want to create this account as new?", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Register", style: .default, handler: {_ in self.signUp(login: login, password: password)}))
+                    alert.addAction(UIAlertAction(title: "Register", style: .default, handler: {_ in self.signUp(login: login, password: password)
+                        self.realmManager.saveRealmUser(login: login, password: password)
+                        print("user saved in RaelmData")
+                    }))
+                   
                     alert.addAction(UIAlertAction(title: "No", style: .cancel ))
                     UIApplication.topViewController()!.present(alert, animated: true, completion: nil)
                
