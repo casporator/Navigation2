@@ -41,14 +41,4 @@ class RealmManager {
         }
     }
     
-    func checkRealmUser(viewController: LoginViewController) {
-        reloadUserBase()
-        
-        if !realmUsers.isEmpty {
-            let profileViewController = ProfileViewController()
-            navigationController?.pushViewController(profileViewController, animated: true)
-        }
-        
-    }
-    
 }
