@@ -13,7 +13,9 @@ class CoreDataManager {
     static let defaultManager = CoreDataManager()
     var posts: [LikesPostModel] = []
     
-    init() {}
+    init() {
+        reloadPosts()
+    }
     
     lazy var persistentConteiner: NSPersistentContainer = {
         
@@ -64,4 +66,18 @@ class CoreDataManager {
         }
     }
     
+    func delete(){
+        let answer = LikesPostModel.fetchRequest()
+        do {
+            let posts = try persistentConteiner.viewContext.fetch(answer)
+            let context = persistentConteiner.viewContext
+            for post in posts {
+                context.delete(post)
+            }
+            saveContext()
+        } catch {
+            print(error)
+        }
+    }
+
 }
