@@ -47,6 +47,7 @@
 		BB4BD5FA295222DB008E3A1E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BB4BD5F9295222DB008E3A1E /* RealmSwift */; };
 		BB4BD6202955ED05008E3A1E /* coreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB4BD61E2955ED04008E3A1E /* coreData.xcdatamodeld */; };
 		BB4BD6222955EDF7008E3A1E /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4BD6212955EDF5008E3A1E /* FavoriteViewController.swift */; };
+		BB4BD6252956080A008E3A1E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4BD6242956080A008E3A1E /* CoreDataManager.swift */; };
 		BB576B2728F5E3E5008922E8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BB576B2628F5E3E5008922E8 /* SnapKit */; };
 		BBAB864328B3B7D400BB951A /* ProfileTabelHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAB864228B3B7D400BB951A /* ProfileTabelHeaderView.swift */; };
 		BBAB864728B4448100BB951A /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAB864628B4448100BB951A /* Struct.swift */; };
@@ -144,6 +145,7 @@
 		BB4BD5F4295220EE008E3A1E /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		BB4BD61F2955ED05008E3A1E /* coreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coreData.xcdatamodel; sourceTree = "<group>"; };
 		BB4BD6212955EDF5008E3A1E /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		BB4BD6242956080A008E3A1E /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		BBAB864228B3B7D400BB951A /* ProfileTabelHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabelHeaderView.swift; sourceTree = "<group>"; };
 		BBAB864628B4448100BB951A /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
 		BBAB864928C3630C00BB951A /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				BB4BD61E2955ED04008E3A1E /* coreData.xcdatamodeld */,
+				BB4BD6242956080A008E3A1E /* CoreDataManager.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				BB1C6FA7291C313B00E2B844 /* BruteForce.swift in Sources */,
 				BBAB864A28C3630C00BB951A /* LogInViewController.swift in Sources */,
 				BB1C70752926B7C100E2B844 /* TrackModel.swift in Sources */,
+				BB4BD6252956080A008E3A1E /* CoreDataManager.swift in Sources */,
 				BBB1468B293B74DF00E0CDB7 /* CheckerService.swift in Sources */,
 				BBAFDEE628C92B5000C4177C /* PostTableViewCell.swift in Sources */,
 				BBAB864328B3B7D400BB951A /* ProfileTabelHeaderView.swift in Sources */,
