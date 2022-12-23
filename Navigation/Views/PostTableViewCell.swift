@@ -7,8 +7,11 @@
 
 import Foundation
 import UIKit
+import StorageService
 
 class PostTableViewCell: UITableViewCell {
+    
+    private var post: PostModel?
     
     struct ViewModel {
         let autor: String
@@ -78,7 +81,7 @@ class PostTableViewCell: UITableViewCell {
         
         contentView.addSubviews(autor, img, descriptionText, likes, views)
         addConstraints()
-        
+        addTabGesture()
     }
     
     required init?(coder: NSCoder) {
@@ -91,6 +94,20 @@ class PostTableViewCell: UITableViewCell {
         likes.text = viewModel.likes
         views.text = viewModel.views
         img.image = UIImage(named: "\(viewModel.image)")
+    }
+    
+    func addTabGesture() {
+        let gestureRecogniser = UITapGestureRecognizer(target: self, action: #selector(savePost))
+            gestureRecogniser.numberOfTapsRequired = 2
+            self.addGestureRecognizer(gestureRecogniser)
+    }
+    
+    @objc func savePost () {
+        if let sevedPost = post {
+            CoreDataManager.defaultManager.addPost(author: sevedPost.autor, descriptionText: sevedPost.description, image: sevedPost.image, likes: Int64(sevedPost.likes), views: Int64(sevedPost.views))
+        } else {
+            return
+        }
     }
     
     func addConstraints(){
