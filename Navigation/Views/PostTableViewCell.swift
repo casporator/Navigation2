@@ -15,7 +15,7 @@ class PostTableViewCell: UITableViewCell {
         let descriptionText: String
         let likes : String
         let views: String
-        let image: UIImage?
+        let image: String
 
     }
 
@@ -90,7 +90,7 @@ class PostTableViewCell: UITableViewCell {
         descriptionText.text = viewModel.descriptionText
         likes.text = viewModel.likes
         views.text = viewModel.views
-        img.image = viewModel.image
+        img.image = UIImage(named: "\(viewModel.image)")
     }
     
     func addConstraints(){

@@ -257,7 +257,7 @@ extension ProfileViewController : UITableViewDataSource, UITableViewDelegate {
                 descriptionText: PostModel.posts[indexPath.row].description,
                 likes: "Likes: \(PostModel.posts[indexPath.row].likes)",
                 views: "Views: \(PostModel.posts[indexPath.row].views)",
-            image: post.image
+                image: post.image
         )
         cell.setup(with: PostModel)
         

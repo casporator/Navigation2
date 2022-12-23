@@ -218,6 +218,7 @@
 		BB15976E28AA704200BBA453 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				BB4BD6232955FC6F008E3A1E /* CoreData */,
 				BBBDD4F1292E816C004E5BEA /* Network Service */,
 				BB1C70732926B79400E2B844 /* Player */,
 				BB2D2D8928EF540000742E1E /* ProFiles */,
@@ -228,7 +229,6 @@
 				BBB14685293A369400E0CDB7 /* GoogleService-Info.plist */,
 				BB15977A28AA704200BBA453 /* LaunchScreen.storyboard */,
 				BB15977D28AA704200BBA453 /* Info.plist */,
-				BB4BD61E2955ED04008E3A1E /* coreData.xcdatamodeld */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -320,6 +320,14 @@
 				BB15977128AA704200BBA453 /* SceneDelegate.swift */,
 			);
 			path = ProFiles;
+			sourceTree = "<group>";
+		};
+		BB4BD6232955FC6F008E3A1E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				BB4BD61E2955ED04008E3A1E /* coreData.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		BBAB864828B4452800BB951A /* Views */ = {
