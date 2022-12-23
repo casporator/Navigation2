@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var profileTabNavigationController : UINavigationController!
     var loginTabNavigationController : UINavigationController!
     var playerTabNavigationController : UINavigationController!
-
+    var favoriteTabNavigationController : UINavigationController!
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -28,6 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         feedTabNavigationController = UINavigationController.init(rootViewController: FeedViewController())
         playerTabNavigationController = UINavigationController.init(rootViewController: TrackListController())
         profileTabNavigationController = UINavigationController.init(rootViewController: ProfileViewController())
+        favoriteTabNavigationController = UINavigationController.init(rootViewController: FavoriteViewController())
        
         
         //MARK: Внедрите зависимость контроллера LoginViewController от LoginInspector:
@@ -40,17 +41,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                             loginTabNavigationController,
                                             playerTabNavigationController,
                                             feedTabNavigationController,
+                                            favoriteTabNavigationController
                                            ]
         
         let item2 = UITabBarItem(title: "Feed", image: UIImage(systemName: "rectangle.3.group.bubble.left"), tag: 0)
         let item1 = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 2)
         let item3 = UITabBarItem(title: "Player", image: UIImage(systemName: "play.rectangle"), tag: 1)
+        let item4 = UITabBarItem(title: "Favorite", image: UIImage(systemName: "heart"), tag: 3)
        
         
         profileTabNavigationController.tabBarItem = item1
         feedTabNavigationController.tabBarItem = item2
         loginTabNavigationController.tabBarItem = item1
         playerTabNavigationController.tabBarItem = item3
+        favoriteTabNavigationController.tabBarItem = item4
        
         
         
