@@ -13,14 +13,6 @@ class PostTableViewCell: UITableViewCell {
     
     private var post: PostModel?
     
-    struct ViewModel {
-        let autor: String
-        let descriptionText: String
-        let likes : String
-        let views: String
-        let image: String
-
-    }
 
     private lazy var autor : UILabel = {
         let label = UILabel()
@@ -100,7 +92,7 @@ class PostTableViewCell: UITableViewCell {
     
     func setupPostFromCoreData(post: LikesPostModel) {
         autor.text = post.author
-        img.image = UIImage(named: post.image!)
+        img.image = UIImage(named: post.image ?? "")
         descriptionText.text = post.descriptionText
         likes.text = "Likes: \(post.likes)"
         views.text = "Views: \(post.views)"
@@ -108,12 +100,12 @@ class PostTableViewCell: UITableViewCell {
     }
     
     func addTabGesture() {
-        let gestureRecogniser = UITapGestureRecognizer(target: self, action: #selector(savePost))
+        let gestureRecogniser = UITapGestureRecognizer(target: self, action: #selector(postTaped))
             gestureRecogniser.numberOfTapsRequired = 2
             self.addGestureRecognizer(gestureRecogniser)
     }
     
-    @objc func savePost () {
+    @objc func postTaped () {
         savedLikesAlert(message: "do you want to save this post to a section FAVORITES")
    }
     
@@ -121,17 +113,21 @@ class PostTableViewCell: UITableViewCell {
     func savedLikesAlert(message: String) {
         let alert = UIAlertController(title: "Liked!", message: message, preferredStyle: .alert)
         let actionOne = UIAlertAction(title: "OK", style: .default) { [self] actionOne in
-            if let savedPost = post {
-
-            CoreDataManager.defaultManager.addPost(author: savedPost.autor, descriptionText: savedPost.description, image: savedPost.image, likes: Int64(savedPost.likes), views: Int64(savedPost.views))
-            } else {
-                print("something wrong wthis saving post at coreData")
-            }
+        savePostToCoreData()
         }
         let actionTwo = UIAlertAction(title: "Cancel", style: .default)
         alert.addAction(actionOne)
         alert.addAction(actionTwo)
         UIApplication.topViewController()!.present(alert, animated: true, completion: nil)
+    }
+    
+    func savePostToCoreData() {
+        if let savedPost = post {
+
+        CoreDataManager.defaultManager.addPost(author: savedPost.autor, descriptionText: savedPost.description, image: savedPost.image, likes: Int64(savedPost.likes), views: Int64(savedPost.views))
+        } else {
+            print("something wrong wthis saving post at coreData")
+        }
     }
 
     func addConstraints(){
