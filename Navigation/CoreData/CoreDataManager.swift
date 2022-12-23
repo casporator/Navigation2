@@ -13,10 +13,6 @@ class CoreDataManager {
     static let defaultManager = CoreDataManager()
     var posts: [LikesPostModel] = []
     
-    init() {
-        reloadPosts()
-    }
-    
     lazy var persistentConteiner: NSPersistentContainer = {
         
         let conteiner = NSPersistentContainer(name: "coreData")
@@ -29,6 +25,11 @@ class CoreDataManager {
         })
         return conteiner
     } ()
+    
+    
+    init() {
+        reloadPosts()
+    }
     
     func saveContext() {
         let context = persistentConteiner.viewContext

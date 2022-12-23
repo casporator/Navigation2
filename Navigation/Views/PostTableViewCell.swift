@@ -88,12 +88,23 @@ class PostTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setup(with viewModel: ViewModel) {
-        autor.text = viewModel.autor
-        descriptionText.text = viewModel.descriptionText
-        likes.text = viewModel.likes
-        views.text = viewModel.views
-        img.image = UIImage(named: "\(viewModel.image)")
+    func setupPost(post: PostModel) {
+        autor.text = post.autor
+        img.image = UIImage(named: post.image)
+        descriptionText.text = post.description
+        likes.text = "Likes: \(post.likes)"
+        views.text = "Views: \(post.views)"
+        self.post = post
+    }
+    
+    
+    func setupPostFromCoreData(post: LikesPostModel) {
+        autor.text = post.author
+        img.image = UIImage(named: post.image!)
+        descriptionText.text = post.descriptionText
+        likes.text = "Likes: \(post.likes)"
+        views.text = "Views: \(post.views)"
+      
     }
     
     func addTabGesture() {
@@ -103,13 +114,26 @@ class PostTableViewCell: UITableViewCell {
     }
     
     @objc func savePost () {
-        if let sevedPost = post {
-            CoreDataManager.defaultManager.addPost(author: sevedPost.autor, descriptionText: sevedPost.description, image: sevedPost.image, likes: Int64(sevedPost.likes), views: Int64(sevedPost.views))
-        } else {
-            return
-        }
-    }
+        savedLikesAlert(message: "do you want to save this post to a section FAVORITES")
+   }
     
+    //MARK: Алерт
+    func savedLikesAlert(message: String) {
+        let alert = UIAlertController(title: "Liked!", message: message, preferredStyle: .alert)
+        let actionOne = UIAlertAction(title: "OK", style: .default) { [self] actionOne in
+            if let savedPost = post {
+
+            CoreDataManager.defaultManager.addPost(author: savedPost.autor, descriptionText: savedPost.description, image: savedPost.image, likes: Int64(savedPost.likes), views: Int64(savedPost.views))
+            } else {
+                print("something wrong wthis saving post at coreData")
+            }
+        }
+        let actionTwo = UIAlertAction(title: "Cancel", style: .default)
+        alert.addAction(actionOne)
+        alert.addAction(actionTwo)
+        UIApplication.topViewController()!.present(alert, animated: true, completion: nil)
+    }
+
     func addConstraints(){
         NSLayoutConstraint.activate([
             autor.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),

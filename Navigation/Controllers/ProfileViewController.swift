@@ -22,8 +22,9 @@ var user1: User = User( userName: "Hipster Dog", userAvatar:  UIImage(named: "IM
         tableView.toAutoLayout()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "indentPostTableCell")
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "indentDefaultTableCell")
+        tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "HeaderView")
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "CustomPostCell")
+        tableView.register(PhotoTableViewCell.self, forCellReuseIdentifier: "PhotosCell")
         tableView.rowHeight = UITableView.automaticDimension
         
         return tableView
@@ -215,7 +216,7 @@ extension ProfileViewController : UITableViewDataSource, UITableViewDelegate {
         }
         
         if section == 1 {
-            return PostModel.posts.count
+            return viewModel.count
         }
         return 0
     }
@@ -237,36 +238,17 @@ extension ProfileViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if indexPath.section == 0 {
-            
-            return PhotoTableViewCell()
-            
-        } else if indexPath.section == 1 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "indentPostTableCell", for: indexPath) as? PostTableViewCell else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "indentDefaultTableCell", for: indexPath)
-        
-            return cell
-        }
-            
-            //MARK: устанавливаю фильтры по заданию
-            
-            let post = PostModel.posts[indexPath.row]
-            
-            let PostModel = PostTableViewCell.ViewModel(
-                autor: PostModel.posts[indexPath.row].autor,
-                descriptionText: PostModel.posts[indexPath.row].description,
-                likes: "Likes: \(PostModel.posts[indexPath.row].likes)",
-                views: "Views: \(PostModel.posts[indexPath.row].views)",
-                image: post.image
-        )
-        cell.setup(with: PostModel)
-        
-        return cell
+            return tableView.dequeueReusableCell(withIdentifier: "PhotosCell", for: indexPath) as! PhotoTableViewCell
             
         } else {
-            return tableView.dequeueReusableCell(withIdentifier: "defaultTableCellIdentifier", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CustomPostCell", for: indexPath) as! PostTableViewCell
+            cell.setupPost(post: viewModel[indexPath.row])
+            return cell
         }
     }
+    
 }
 
 
