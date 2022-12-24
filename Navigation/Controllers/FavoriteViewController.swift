@@ -28,9 +28,6 @@ class FavoriteViewController: UIViewController {
         self.title = "Favorite"
         view.backgroundColor = .white
         
-        let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deletePosts))
-        navigationItem.rightBarButtonItems = [deleteButton]
-        
         setUpUI()
 }
 
@@ -45,12 +42,7 @@ class FavoriteViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
-    
-    @objc func deletePosts() {
-        CoreDataManager.defaultManager.delete()
-        tableView.reloadData()
-    }
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -69,7 +61,7 @@ extension FavoriteViewController : UITableViewDataSource{
 
  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CoreDataManager.defaultManager.posts.count
+        return CoreDataManager().posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,7 +77,7 @@ extension FavoriteViewController : UITableViewDataSource{
     // Удаление элемента
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            CoreDataManager.defaultManager.delete()
+            CoreDataManager().delete()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             
