@@ -11,6 +11,7 @@ import CoreData
 class CoreDataManager {
     
     static let defaultManager = CoreDataManager()
+  
     var posts: [LikesPostModel] = []
     
     lazy var persistentConteiner: NSPersistentContainer = {
@@ -18,7 +19,6 @@ class CoreDataManager {
         let conteiner = NSPersistentContainer(name: "coreData")
         conteiner.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                
                 fatalError("Unresolved error \(error), \(error.userInfo)")
                 
             }
