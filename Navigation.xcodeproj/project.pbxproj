@@ -45,6 +45,9 @@
 		BB4BD5F5295220EE008E3A1E /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4BD5F4295220EE008E3A1E /* RealmManager.swift */; };
 		BB4BD5F8295222DB008E3A1E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = BB4BD5F7295222DB008E3A1E /* Realm */; };
 		BB4BD5FA295222DB008E3A1E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BB4BD5F9295222DB008E3A1E /* RealmSwift */; };
+		BB4BD6202955ED05008E3A1E /* coreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB4BD61E2955ED04008E3A1E /* coreData.xcdatamodeld */; };
+		BB4BD6222955EDF7008E3A1E /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4BD6212955EDF5008E3A1E /* FavoriteViewController.swift */; };
+		BB4BD6252956080A008E3A1E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4BD6242956080A008E3A1E /* CoreDataManager.swift */; };
 		BB576B2728F5E3E5008922E8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BB576B2628F5E3E5008922E8 /* SnapKit */; };
 		BBAB864328B3B7D400BB951A /* ProfileTabelHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAB864228B3B7D400BB951A /* ProfileTabelHeaderView.swift */; };
 		BBAB864728B4448100BB951A /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAB864628B4448100BB951A /* Struct.swift */; };
@@ -140,6 +143,9 @@
 		BB2D2D7328EF40BF00742E1E /* StorageServiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StorageServiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB2D2D7A28EF40BF00742E1E /* StorageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceTests.swift; sourceTree = "<group>"; };
 		BB4BD5F4295220EE008E3A1E /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		BB4BD61F2955ED05008E3A1E /* coreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coreData.xcdatamodel; sourceTree = "<group>"; };
+		BB4BD6212955EDF5008E3A1E /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		BB4BD6242956080A008E3A1E /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		BBAB864228B3B7D400BB951A /* ProfileTabelHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabelHeaderView.swift; sourceTree = "<group>"; };
 		BBAB864628B4448100BB951A /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
 		BBAB864928C3630C00BB951A /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +220,7 @@
 		BB15976E28AA704200BBA453 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				BB4BD6232955FC6F008E3A1E /* CoreData */,
 				BBBDD4F1292E816C004E5BEA /* Network Service */,
 				BB1C70732926B79400E2B844 /* Player */,
 				BB2D2D8928EF540000742E1E /* ProFiles */,
@@ -317,6 +324,15 @@
 			path = ProFiles;
 			sourceTree = "<group>";
 		};
+		BB4BD6232955FC6F008E3A1E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				BB4BD61E2955ED04008E3A1E /* coreData.xcdatamodeld */,
+				BB4BD6242956080A008E3A1E /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		BBAB864828B4452800BB951A /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +354,7 @@
 				BB15978528AA75F100BBA453 /* ProfileViewController.swift */,
 				BBAB864928C3630C00BB951A /* LogInViewController.swift */,
 				BBAFDEF628CD4F9400C4177C /* PhotosViewController.swift */,
+				BB4BD6212955EDF5008E3A1E /* FavoriteViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -554,6 +571,7 @@
 				BBAB864728B4448100BB951A /* Struct.swift in Sources */,
 				BBAFDEF528CD4C2C00C4177C /* PhotosCollectionViewCell.swift in Sources */,
 				BB1C6F9A2917EE9B00E2B844 /* CurrentUserService.swift in Sources */,
+				BB4BD6222955EDF7008E3A1E /* FavoriteViewController.swift in Sources */,
 				BB1C70822926C61C00E2B844 /* PlayerCustomButton.swift in Sources */,
 				BBAFDEF328CD4A3100C4177C /* PhotoTableViewCell.swift in Sources */,
 				BB28D52C28FF45E90049BB92 /* Checker.swift in Sources */,
@@ -563,6 +581,7 @@
 				BB1C6FB0291FF90900E2B844 /* Errors.swift in Sources */,
 				BB1C6F982917EE6900E2B844 /* UserService.swift in Sources */,
 				BB15978428AA75DE00BBA453 /* FeedViewController.swift in Sources */,
+				BB4BD6202955ED05008E3A1E /* coreData.xcdatamodeld in Sources */,
 				BBAFDED428C6A07500C4177C /* extension.swift in Sources */,
 				BBBDD4F3292E8218004E5BEA /* NetworkService.swift in Sources */,
 				BB1C70722926B33600E2B844 /* PlayerController.swift in Sources */,
@@ -571,6 +590,7 @@
 				BB1C6FA7291C313B00E2B844 /* BruteForce.swift in Sources */,
 				BBAB864A28C3630C00BB951A /* LogInViewController.swift in Sources */,
 				BB1C70752926B7C100E2B844 /* TrackModel.swift in Sources */,
+				BB4BD6252956080A008E3A1E /* CoreDataManager.swift in Sources */,
 				BBB1468B293B74DF00E0CDB7 /* CheckerService.swift in Sources */,
 				BBAFDEE628C92B5000C4177C /* PostTableViewCell.swift in Sources */,
 				BBAB864328B3B7D400BB951A /* ProfileTabelHeaderView.swift in Sources */,
@@ -1003,6 +1023,19 @@
 			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		BB4BD61E2955ED04008E3A1E /* coreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BB4BD61F2955ED05008E3A1E /* coreData.xcdatamodel */,
+			);
+			currentVersion = BB4BD61F2955ED05008E3A1E /* coreData.xcdatamodel */;
+			path = coreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BB15976428AA704200BBA453 /* Project object */;
 }
