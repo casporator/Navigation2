@@ -61,7 +61,7 @@ extension FavoriteViewController : UITableViewDataSource{
 
  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CoreDataManager().posts.count
+        return CoreDataManager.defaultManager.posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,7 +77,7 @@ extension FavoriteViewController : UITableViewDataSource{
     // Удаление элемента
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            CoreDataManager().deleteAllPosts()
+            CoreDataManager().deleteOnePost(index: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             

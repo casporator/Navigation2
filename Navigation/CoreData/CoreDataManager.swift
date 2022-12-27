@@ -65,7 +65,7 @@ class CoreDataManager {
    // теперь добавление поста идет в бэкграунде
     func addPost(author: String, descriptionText: String, image: String, likes: Int64, views: Int64) {
         backgroundContext.perform { [self] in
-            let newPost = LikesPostModel(context: persistentConteiner.viewContext)
+            let newPost = LikesPostModel(context: backgroundContext)
             newPost.author = author
             newPost.descriptionText = descriptionText
             newPost.likes = likes
