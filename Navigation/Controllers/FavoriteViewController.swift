@@ -77,7 +77,7 @@ extension FavoriteViewController : UITableViewDataSource{
     // Удаление элемента
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            CoreDataManager().delete()
+            CoreDataManager().deleteAllPosts()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             
