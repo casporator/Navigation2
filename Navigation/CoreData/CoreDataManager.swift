@@ -128,7 +128,7 @@ class CoreDataManager {
             posts = sortedPosts
         } catch {
             print(error)
-            posts = []
+       
        }
     }
     
