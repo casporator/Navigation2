@@ -27,7 +27,8 @@ class FavoriteViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Favorite"
         view.backgroundColor = .white
-        
+        let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchByAutor))
+        navigationItem.rightBarButtonItems = [searchButton]
         setUpUI()
 }
 
@@ -41,6 +42,15 @@ class FavoriteViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
+    }
+    
+    @objc func searchByAutor(){
+        showInputDialog(title: "by Autor:", actionHandler:  { text in
+            if let result = text {
+                CoreDataManager.defaultManager.getSerchResault(autor: result)
+                self.tableView.reloadData()
+            }
+        })
     }
         
     override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +71,7 @@ extension FavoriteViewController : UITableViewDataSource{
 
  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CoreDataManager.defaultManager.posts.count
+        return CoreDataManager().posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -74,13 +84,19 @@ extension FavoriteViewController : UITableViewDataSource{
         return true
     }
     
-    // Удаление элемента
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            CoreDataManager().deleteOnePost(index: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            
-        }
+    // Удаление элемента cвайпом
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return UISwipeActionsConfiguration(actions: [
+            deleteAction(forRowAt: indexPath)
+        ])
     }
+    
+    private func deleteAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
+        return UIContextualAction(style: .destructive, title: "Delete") { (action, swipeButtonView, completion) in
+            CoreDataManager().deleteOnePost(index: indexPath.row)
+            CoreDataManager().reloadPosts()
+            self.tableView.reloadData()
+            completion(true)
+        }
+}
 }

@@ -89,6 +89,19 @@ class CoreDataManager {
         }
     }
     
+    func getSerchResault(autor: String) -> [LikesPostModel] {
+        let answer = LikesPostModel.fetchRequest()
+        answer.predicate = NSPredicate(format: "autor LIKE[c] %@", autor)
+        do {
+            let sortedPosts = try persistentConteiner.viewContext.fetch(answer)
+            posts = sortedPosts
+            return posts
+        } catch {
+            print(error)
+        }
+        return []
+    }
+    
     //создаю функцию для удаление одного поста:
     func deleteOnePost(index: Int) {
         let answer = LikesPostModel.fetchRequest()
@@ -118,5 +131,8 @@ class CoreDataManager {
             print(error)
         }
     }
-
+    
+ 
+    
+    
 }
