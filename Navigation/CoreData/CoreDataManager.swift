@@ -89,18 +89,6 @@ class CoreDataManager {
         }
     }
     
-    func getSerchResault(autor: String) -> [LikesPostModel] {
-        let answer = LikesPostModel.fetchRequest()
-        answer.predicate = NSPredicate(format: "autor LIKE[c] %@", autor)
-        do {
-            let sortedPosts = try persistentConteiner.viewContext.fetch(answer)
-            posts = sortedPosts
-            return posts
-        } catch {
-            print(error)
-        }
-        return []
-    }
     
     //создаю функцию для удаление одного поста:
     func deleteOnePost(index: Int) {
@@ -132,7 +120,17 @@ class CoreDataManager {
         }
     }
     
- 
+    func getSerchResault(by: String) {
+        let answer = LikesPostModel.fetchRequest()
+        answer.predicate = NSPredicate(format: "author CONTAINS[c] %@", by)
+        do {
+            let sortedPosts = try persistentConteiner.viewContext.fetch(answer)
+            posts = sortedPosts
+        } catch {
+            print(error)
+            posts = []
+       }
+    }
     
     
 }

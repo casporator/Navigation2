@@ -44,10 +44,10 @@ class FavoriteViewController: UIViewController {
         ])
     }
     
-    @objc func searchByAutor(){
+    @objc func searchByAutor() {
         showInputDialog(title: "by Autor:", actionHandler:  { text in
             if let result = text {
-                CoreDataManager.defaultManager.getSerchResault(autor: result)
+                CoreDataManager().getSerchResault(by: result)
                 self.tableView.reloadData()
             }
         })
@@ -55,6 +55,7 @@ class FavoriteViewController: UIViewController {
         
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        CoreDataManager.defaultManager.reloadPosts()
         tableView.reloadData()
     }
 }
