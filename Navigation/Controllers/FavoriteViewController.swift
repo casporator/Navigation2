@@ -47,7 +47,7 @@ class FavoriteViewController: UIViewController {
     @objc func searchByAutor() {
         showInputDialog(title: "by Autor:", actionHandler:  { text in
             if let result = text {
-                CoreDataManager().getSerchResault(by: result)
+                CoreDataManager.defaultManager.getSerchResault(by: result)
                 self.tableView.reloadData()
             }
         })
@@ -72,7 +72,7 @@ extension FavoriteViewController : UITableViewDataSource{
 
  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CoreDataManager().posts.count
+        return CoreDataManager.defaultManager.posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -94,10 +94,13 @@ extension FavoriteViewController : UITableViewDataSource{
     
     private func deleteAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
         return UIContextualAction(style: .destructive, title: "Delete") { (action, swipeButtonView, completion) in
-            CoreDataManager().deleteOnePost(index: indexPath.row)
+            CoreDataManager.defaultManager.delete(post: CoreDataManager.defaultManager.posts[indexPath.row])
             CoreDataManager().reloadPosts()
             self.tableView.reloadData()
             completion(true)
         }
 }
 }
+
+
+  

@@ -91,38 +91,43 @@ class CoreDataManager {
     
     
     //создаю функцию для удаление одного поста:
-    func deleteOnePost(index: Int) {
-        let answer = LikesPostModel.fetchRequest()
-        do {
-            let post = try persistentConteiner.viewContext.fetch(answer)
-            let context = persistentConteiner.viewContext
-                context.delete(post[index])
-
+//    func deleteOnePost(index: Int) {
+//        let answer = LikesPostModel.fetchRequest()
+//        do {
+//            let post = try persistentConteiner.viewContext.fetch(answer)
+//            let context = persistentConteiner.viewContext
+//                context.delete(post[index])
+//
+//            saveContext()
+//        } catch {
+//            print(error)
+//        }
+//    }
+    
+    func delete(post: LikesPostModel) {
+            persistentConteiner.viewContext.delete(post)
             saveContext()
-        } catch {
-            print(error)
-        }
-    }
-    
-    
-    
-    func deleteAllPosts(){
-        let answer = LikesPostModel.fetchRequest()
-        do {
-            let posts = try persistentConteiner.viewContext.fetch(answer)
-            let context = persistentConteiner.viewContext
-            for post in posts {
-                context.delete(post)
+            reloadPosts()
+            posts.removeAll{$0 == post}
+            /*
+            let answer = LikesPostModel.fetchRequest()
+            do {
+                let posts = try persistentConteiner.viewContext.fetch(answer)
+                let context = persistentConteiner.viewContext
+                for post in posts {
+                    context.delete(post)
+                }
+                saveContext()
+            } catch {
+                print(error)
             }
-            saveContext()
-        } catch {
-            print(error)
+             */
         }
-    }
     
     func getSerchResault(by: String) {
         let answer = LikesPostModel.fetchRequest()
         answer.predicate = NSPredicate(format: "author CONTAINS[c] %@", by)
+        answer.sortDescriptors = [NSSortDescriptor(key: "author", ascending: true)]
         do {
             let sortedPosts = try persistentConteiner.viewContext.fetch(answer)
             posts = sortedPosts
