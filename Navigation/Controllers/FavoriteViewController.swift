@@ -28,7 +28,8 @@ class FavoriteViewController: UIViewController {
         self.title = "Favorite"
         view.backgroundColor = .white
         let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchByAutor))
-        navigationItem.rightBarButtonItems = [searchButton]
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(cancelSearch))
+        navigationItem.rightBarButtonItems = [searchButton, cancelButton]
         setUpUI()
 }
 
@@ -51,6 +52,10 @@ class FavoriteViewController: UIViewController {
                 self.tableView.reloadData()
             }
         })
+    }
+    
+    @objc func cancelSearch () {
+        
     }
         
     override func viewWillAppear(_ animated: Bool) {
