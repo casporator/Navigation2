@@ -55,7 +55,8 @@ class FavoriteViewController: UIViewController {
     }
     
     @objc func cancelSearch () {
-        
+        CoreDataManager.defaultManager.reloadPosts()
+        tableView.reloadData()
     }
         
     override func viewWillAppear(_ animated: Bool) {
