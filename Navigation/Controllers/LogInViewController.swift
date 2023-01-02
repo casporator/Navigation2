@@ -192,6 +192,10 @@ class LoginViewController : UIViewController {
 
                 let profileViewController = ProfileViewController()
                 profileViewController.user1 = loginingUser.user
+                
+
+
+                
                 navigationController?.pushViewController(profileViewController, animated: true)
             } else {
 

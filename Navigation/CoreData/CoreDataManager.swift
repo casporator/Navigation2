@@ -26,6 +26,12 @@ class CoreDataManager {
         return conteiner
     } ()
     
+    // создаем бэкграунд контекст
+    lazy var backgroundContext: NSManagedObjectContext = {
+        let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        context.persistentStoreCoordinator = persistentConteiner.persistentStoreCoordinator
+        return context
+    }()
     
     init() {
         reloadPosts()
@@ -43,16 +49,32 @@ class CoreDataManager {
         }
     }
     
+    // сохраняем бэкграунд контекст
+    func saveBackgroundContext() {
+        let context = backgroundContext
+        if context.hasChanges{
+            do {
+                try context.save()
+            }catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+    
+   // теперь добавление поста идет в бэкграунде
     func addPost(author: String, descriptionText: String, image: String, likes: Int64, views: Int64) {
-        let newPost = LikesPostModel(context: persistentConteiner.viewContext)
-        newPost.author = author
-        newPost.descriptionText = descriptionText
-        newPost.likes = likes
-        newPost.views = views
-        newPost.image = image
-     
-        saveContext()
-        reloadPosts()
+        backgroundContext.perform { [self] in
+            let newPost = LikesPostModel(context: backgroundContext)
+            newPost.author = author
+            newPost.descriptionText = descriptionText
+            newPost.likes = likes
+            newPost.views = views
+            newPost.image = image
+            
+            saveBackgroundContext()
+            reloadPosts()
+        }
     }
     
     func reloadPosts() {
@@ -67,18 +89,53 @@ class CoreDataManager {
         }
     }
     
-    func delete(){
-        let answer = LikesPostModel.fetchRequest()
-        do {
-            let posts = try persistentConteiner.viewContext.fetch(answer)
-            let context = persistentConteiner.viewContext
-            for post in posts {
-                context.delete(post)
-            }
+    
+    //создаю функцию для удаление одного поста:
+//    func deleteOnePost(index: Int) {
+//        let answer = LikesPostModel.fetchRequest()
+//        do {
+//            let post = try persistentConteiner.viewContext.fetch(answer)
+//            let context = persistentConteiner.viewContext
+//                context.delete(post[index])
+//
+//            saveContext()
+//        } catch {
+//            print(error)
+//        }
+//    }
+    
+    func delete(post: LikesPostModel) {
+            persistentConteiner.viewContext.delete(post)
             saveContext()
+            reloadPosts()
+            posts.removeAll{$0 == post}
+            /*
+            let answer = LikesPostModel.fetchRequest()
+            do {
+                let posts = try persistentConteiner.viewContext.fetch(answer)
+                let context = persistentConteiner.viewContext
+                for post in posts {
+                    context.delete(post)
+                }
+                saveContext()
+            } catch {
+                print(error)
+            }
+             */
+        }
+    
+    func getSerchResault(by: String) {
+        let answer = LikesPostModel.fetchRequest()
+        answer.predicate = NSPredicate(format: "author CONTAINS[c] %@", by)
+        answer.sortDescriptors = [NSSortDescriptor(key: "author", ascending: true)]
+        do {
+            let sortedPosts = try persistentConteiner.viewContext.fetch(answer)
+            posts = sortedPosts
         } catch {
             print(error)
-        }
+       
+       }
     }
-
+    
+    
 }

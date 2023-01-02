@@ -14,7 +14,7 @@ import iOSIntPackage
 
 class ProfileViewController: UIViewController {
     
-var user1: User = User( userName: "Hipster Dog", userAvatar:  UIImage(named: "IMG_0037") ?? UIImage(), userStatus: "У меня тоже есть чувства. Например голод")
+var user1: User = User(userName: "Mr.Pipin", userAvatar: UIImage(named: "pipin") ?? UIImage(), userStatus: "Мои шесть кубиков защищены слоем жира")
   
     
     private lazy var tableView: UITableView = {

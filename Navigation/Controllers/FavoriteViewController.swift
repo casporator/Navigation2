@@ -27,7 +27,9 @@ class FavoriteViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Favorite"
         view.backgroundColor = .white
-        
+        let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchByAutor))
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(cancelSearch))
+        navigationItem.rightBarButtonItems = [searchButton, cancelButton]
         setUpUI()
 }
 
@@ -42,9 +44,24 @@ class FavoriteViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
+    
+    @objc func searchByAutor() {
+        showInputDialog(title: "by Autor:", actionHandler:  { text in
+            if let result = text {
+                CoreDataManager.defaultManager.getSerchResault(by: result)
+                self.tableView.reloadData()
+            }
+        })
+    }
+    
+    @objc func cancelSearch () {
+        CoreDataManager.defaultManager.reloadPosts()
+        tableView.reloadData()
+    }
         
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        CoreDataManager.defaultManager.reloadPosts()
         tableView.reloadData()
     }
 }
@@ -61,7 +78,7 @@ extension FavoriteViewController : UITableViewDataSource{
 
  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CoreDataManager().posts.count
+        return CoreDataManager.defaultManager.posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -74,13 +91,22 @@ extension FavoriteViewController : UITableViewDataSource{
         return true
     }
     
-    // Удаление элемента
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            CoreDataManager().delete()
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            
-        }
+    // Удаление элемента cвайпом
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return UISwipeActionsConfiguration(actions: [
+            deleteAction(forRowAt: indexPath)
+        ])
     }
+    
+    private func deleteAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
+        return UIContextualAction(style: .destructive, title: "Delete") { (action, swipeButtonView, completion) in
+            CoreDataManager.defaultManager.delete(post: CoreDataManager.defaultManager.posts[indexPath.row])
+            CoreDataManager().reloadPosts()
+            self.tableView.reloadData()
+            completion(true)
+        }
 }
+}
+
+
+  
